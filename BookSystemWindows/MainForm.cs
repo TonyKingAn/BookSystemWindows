@@ -1,8 +1,15 @@
-﻿using BookSystemCommon.Models;
+﻿using BookSystemWindows.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Configuration;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.ListView;
 
 namespace BookSystemWindows
 {
@@ -22,7 +29,8 @@ namespace BookSystemWindows
             "借阅人",
             "租借日期",
             "租借天数",
-            "剩余时间"
+            "剩余时间",
+            "操作"
         };
 
 
@@ -113,6 +121,11 @@ namespace BookSystemWindows
         }
 
         private void ReturnBooks_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
