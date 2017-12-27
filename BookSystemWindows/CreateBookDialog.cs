@@ -1,12 +1,8 @@
-﻿using BookSystemWindows.Models;
+﻿using BookSystemCommon.Models;
+using BookSystemCommon.Models.Biz;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BookSystemWindows
@@ -25,19 +21,12 @@ namespace BookSystemWindows
 
             InitializeComponent();
 
-            Dictionary<BookType, string> bookType = new Dictionary<BookType, string>();
-            bookType.Add(BookType.Adult, "成人");
-            bookType.Add(BookType.Childern, "儿童");
+            var bookType = BizManager.BooksBiz.GetBookTypes();
             BindingSource bs = new BindingSource();
             bs.DataSource = bookType;
             this.bookType_cb.DataSource = bs;
             bookType_cb.ValueMember = "Key";
             bookType_cb.DisplayMember = "Value";
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void confirm_btn_Click(object sender, EventArgs e)

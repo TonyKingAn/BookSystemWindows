@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookSystemWindows.Models
+namespace BookSystemCommon.Models
 {
     public class BookDbContext : DbContext
     {
