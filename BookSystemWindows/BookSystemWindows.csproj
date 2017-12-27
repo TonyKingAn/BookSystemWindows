@@ -43,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -55,6 +56,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateBookDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateBookDialog.Designer.cs">
+      <DependentUpon>CreateBookDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateUserDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateUserDialog.Designer.cs">
+      <DependentUpon>CreateUserDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Heart.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +88,12 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CreateBookDialog.resx">
+      <DependentUpon>CreateBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateUserDialog.resx">
+      <DependentUpon>CreateUserDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

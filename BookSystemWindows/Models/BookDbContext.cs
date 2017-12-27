@@ -10,6 +10,12 @@ namespace BookSystemWindows.Models
     public class BookDbContext : DbContext
     {
 
+        public DbSet<Book> Books { get; set; }
+
+        public DbSet<RentBook> RentBooks { get; set; }
+
+        public DbSet<User> Users { get; set; }
+
         public BookDbContext(string connectionString) : base(connectionString)
         {
 

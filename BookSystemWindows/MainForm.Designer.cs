@@ -1,4 +1,6 @@
-﻿namespace BookSystemWindows
+﻿using System.Windows.Forms;
+
+namespace BookSystemWindows
 {
     partial class MainForm
     {
@@ -49,7 +51,7 @@
             this.用户管理ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(616, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(674, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -60,7 +62,6 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(71, 20);
             this.toolStripMenuItem1.Text = "图书管理";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // CreateBooksTip
             // 
@@ -94,54 +95,62 @@
             // 
             // BookDetailList
             // 
+            this.BookDetailList.FullRowSelect = true;
+            this.BookDetailList.GridLines = true;
             this.BookDetailList.Location = new System.Drawing.Point(34, 67);
             this.BookDetailList.Name = "BookDetailList";
-            this.BookDetailList.Size = new System.Drawing.Size(388, 254);
+            this.BookDetailList.Size = new System.Drawing.Size(463, 254);
             this.BookDetailList.TabIndex = 1;
+            this.BookDetailList.MultiSelect = true;
             this.BookDetailList.UseCompatibleStateImageBehavior = false;
             this.BookDetailList.View = System.Windows.Forms.View.Details;
+            this.BookDetailList.SizeChanged += new System.EventHandler(this.listview_SizeChanged);
             // 
             // UpdateBook
             // 
-            this.UpdateBook.Location = new System.Drawing.Point(472, 96);
+            this.UpdateBook.Location = new System.Drawing.Point(549, 99);
             this.UpdateBook.Name = "UpdateBook";
             this.UpdateBook.Size = new System.Drawing.Size(75, 23);
             this.UpdateBook.TabIndex = 2;
             this.UpdateBook.Text = "修改图书";
             this.UpdateBook.UseVisualStyleBackColor = true;
+            this.UpdateBook.Click += new System.EventHandler(this.UpdateBook_Click);
             // 
             // DeleteBooks
             // 
-            this.DeleteBooks.Location = new System.Drawing.Point(472, 154);
+            this.DeleteBooks.Location = new System.Drawing.Point(549, 157);
             this.DeleteBooks.Name = "DeleteBooks";
             this.DeleteBooks.Size = new System.Drawing.Size(75, 23);
             this.DeleteBooks.TabIndex = 3;
             this.DeleteBooks.Text = "删除图书";
             this.DeleteBooks.UseVisualStyleBackColor = true;
+            this.DeleteBooks.Click += new System.EventHandler(this.DeleteBooks_Click);
             // 
             // RentBooks
             // 
-            this.RentBooks.Location = new System.Drawing.Point(472, 208);
+            this.RentBooks.Location = new System.Drawing.Point(549, 211);
             this.RentBooks.Name = "RentBooks";
             this.RentBooks.Size = new System.Drawing.Size(75, 23);
             this.RentBooks.TabIndex = 4;
             this.RentBooks.Text = "借书";
             this.RentBooks.UseVisualStyleBackColor = true;
+            this.RentBooks.Click += new System.EventHandler(this.RentBooks_Click);
             // 
             // ReturnBooks
             // 
-            this.ReturnBooks.Location = new System.Drawing.Point(472, 266);
+            this.ReturnBooks.Location = new System.Drawing.Point(549, 269);
             this.ReturnBooks.Name = "ReturnBooks";
             this.ReturnBooks.Size = new System.Drawing.Size(75, 23);
             this.ReturnBooks.TabIndex = 5;
             this.ReturnBooks.Text = "还书";
             this.ReturnBooks.UseVisualStyleBackColor = true;
+            this.ReturnBooks.Click += new System.EventHandler(this.ReturnBooks_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 376);
+            this.ClientSize = new System.Drawing.Size(674, 374);
             this.Controls.Add(this.ReturnBooks);
             this.Controls.Add(this.RentBooks);
             this.Controls.Add(this.DeleteBooks);
