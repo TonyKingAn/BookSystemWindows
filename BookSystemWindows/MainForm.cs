@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-
 namespace BookSystemWindows
 {
     public partial class MainForm : Form
@@ -22,7 +21,8 @@ namespace BookSystemWindows
             "借阅人",
             "租借日期",
             "租借天数",
-            "剩余时间"
+            "剩余时间",
+            "操作"
         };
 
 
@@ -113,6 +113,11 @@ namespace BookSystemWindows
         }
 
         private void ReturnBooks_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
