@@ -59,8 +59,7 @@ namespace BookSystemWindows
                     Type = type
                 };
 
-                db.Books.Add(createBook);
-                db.SaveChanges();
+                BizManager.BooksBiz.CreateBook(createBook);
                 this.Hide();
                 callback();
             }

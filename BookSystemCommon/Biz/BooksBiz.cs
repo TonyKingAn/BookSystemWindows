@@ -17,5 +17,56 @@ namespace BookSystemCommon.Models.Biz
             return bookType;
         }
 
+        public bool CreateBook(Book source)
+        {
+            var result = false;
+            using (var db = Heart.CreateBookDbContext())
+            {
+                var createBook = new Book()
+                {
+                    Id = Guid.NewGuid(),
+                    BookNumber = source.BookNumber,
+                    Name = source.Name,
+                    Type = source.Type
+                };
+
+                db.Books.Add(createBook);
+                db.SaveChanges();
+                result = true;
+            }
+            return result;
+        }
+
+        public void UpdateBook(Book updateSource)
+        {
+            if (updateSource == null)
+            {
+                throw new Exception("无法找到更新的图书");
+            }
+
+            using (var db = Heart.CreateBookDbContext())
+            {
+                var source = db.Books.FirstOrDefault(b => b.BookNumber == updateSource.BookNumber);
+
+                if (source != null)
+                {
+                    var createBook = new Book()
+                    {
+                        Id = Guid.NewGuid(),
+                        BookNumber = source.BookNumber,
+                        Name = source.Name,
+                        Type = source.Type
+                    };
+
+                    db.Books.Add(createBook);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("未找到当前图书");
+                }
+            }
+        }
+
     }
 }

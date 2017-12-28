@@ -68,7 +68,6 @@
     <Compile Include="CreateUserDialog.Designer.cs">
       <DependentUpon>CreateUserDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Heart.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
