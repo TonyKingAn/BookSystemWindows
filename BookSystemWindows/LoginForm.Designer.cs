@@ -37,14 +37,14 @@
             // 
             // userName
             // 
-            this.userName.Location = new System.Drawing.Point(162, 89);
+            this.userName.Location = new System.Drawing.Point(200, 116);
             this.userName.Name = "userName";
             this.userName.Size = new System.Drawing.Size(208, 20);
             this.userName.TabIndex = 0;
             // 
             // Password
             // 
-            this.Password.Location = new System.Drawing.Point(162, 143);
+            this.Password.Location = new System.Drawing.Point(200, 170);
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(208, 20);
             this.Password.TabIndex = 1;
@@ -52,7 +52,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(99, 89);
+            this.label1.Location = new System.Drawing.Point(137, 116);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 2;
@@ -62,7 +62,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(99, 143);
+            this.label2.Location = new System.Drawing.Point(137, 170);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 3;
@@ -70,9 +70,9 @@
             // 
             // Login_btn
             // 
-            this.Login_btn.Location = new System.Drawing.Point(295, 204);
+            this.Login_btn.Location = new System.Drawing.Point(333, 233);
             this.Login_btn.Name = "Login_btn";
-            this.Login_btn.Size = new System.Drawing.Size(75, 23);
+            this.Login_btn.Size = new System.Drawing.Size(75, 31);
             this.Login_btn.TabIndex = 4;
             this.Login_btn.Text = "登陆";
             this.Login_btn.UseVisualStyleBackColor = true;
@@ -82,13 +82,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 324);
+            this.ClientSize = new System.Drawing.Size(547, 366);
             this.Controls.Add(this.Login_btn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Password);
             this.Controls.Add(this.userName);
             this.Name = "LoginForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "图书管理系统 - 请登录";
             this.ResumeLayout(false);
             this.PerformLayout();

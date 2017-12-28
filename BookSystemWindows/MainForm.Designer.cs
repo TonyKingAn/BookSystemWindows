@@ -119,9 +119,9 @@ namespace BookSystemWindows
             // 
             // UpdateBook
             // 
-            this.UpdateBook.Location = new System.Drawing.Point(760, 46);
+            this.UpdateBook.Location = new System.Drawing.Point(794, 43);
             this.UpdateBook.Name = "UpdateBook";
-            this.UpdateBook.Size = new System.Drawing.Size(86, 28);
+            this.UpdateBook.Size = new System.Drawing.Size(94, 34);
             this.UpdateBook.TabIndex = 2;
             this.UpdateBook.Text = "修改图书";
             this.UpdateBook.UseVisualStyleBackColor = true;
@@ -129,9 +129,9 @@ namespace BookSystemWindows
             // 
             // DeleteBooks
             // 
-            this.DeleteBooks.Location = new System.Drawing.Point(760, 102);
+            this.DeleteBooks.Location = new System.Drawing.Point(794, 96);
             this.DeleteBooks.Name = "DeleteBooks";
-            this.DeleteBooks.Size = new System.Drawing.Size(86, 28);
+            this.DeleteBooks.Size = new System.Drawing.Size(94, 34);
             this.DeleteBooks.TabIndex = 3;
             this.DeleteBooks.Text = "删除图书";
             this.DeleteBooks.UseVisualStyleBackColor = true;
@@ -139,9 +139,9 @@ namespace BookSystemWindows
             // 
             // RentBooks
             // 
-            this.RentBooks.Location = new System.Drawing.Point(879, 102);
+            this.RentBooks.Location = new System.Drawing.Point(923, 96);
             this.RentBooks.Name = "RentBooks";
-            this.RentBooks.Size = new System.Drawing.Size(88, 28);
+            this.RentBooks.Size = new System.Drawing.Size(94, 34);
             this.RentBooks.TabIndex = 4;
             this.RentBooks.Text = "借书";
             this.RentBooks.UseVisualStyleBackColor = true;
@@ -149,9 +149,9 @@ namespace BookSystemWindows
             // 
             // ReturnBooks
             // 
-            this.ReturnBooks.Location = new System.Drawing.Point(879, 46);
+            this.ReturnBooks.Location = new System.Drawing.Point(923, 44);
             this.ReturnBooks.Name = "ReturnBooks";
-            this.ReturnBooks.Size = new System.Drawing.Size(88, 28);
+            this.ReturnBooks.Size = new System.Drawing.Size(94, 34);
             this.ReturnBooks.TabIndex = 5;
             this.ReturnBooks.Text = "还书";
             this.ReturnBooks.UseVisualStyleBackColor = true;
@@ -161,7 +161,7 @@ namespace BookSystemWindows
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(59, 100);
+            this.label1.Location = new System.Drawing.Point(77, 103);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 15);
             this.label1.TabIndex = 6;
@@ -171,7 +171,7 @@ namespace BookSystemWindows
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(307, 54);
+            this.label2.Location = new System.Drawing.Point(325, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 7;
@@ -179,7 +179,7 @@ namespace BookSystemWindows
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(146, 99);
+            this.textBox1.Location = new System.Drawing.Point(164, 102);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(117, 20);
@@ -187,7 +187,7 @@ namespace BookSystemWindows
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(391, 51);
+            this.textBox2.Location = new System.Drawing.Point(409, 58);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(120, 20);
@@ -195,7 +195,7 @@ namespace BookSystemWindows
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(391, 99);
+            this.textBox3.Location = new System.Drawing.Point(409, 102);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(120, 20);
@@ -204,7 +204,7 @@ namespace BookSystemWindows
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(307, 102);
+            this.label3.Location = new System.Drawing.Point(325, 105);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 11;
@@ -212,7 +212,7 @@ namespace BookSystemWindows
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(582, 68);
+            this.button1.Location = new System.Drawing.Point(608, 68);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 37);
             this.button1.TabIndex = 12;
@@ -222,7 +222,7 @@ namespace BookSystemWindows
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(59, 58);
+            this.label4.Location = new System.Drawing.Point(77, 61);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 13;
@@ -230,7 +230,7 @@ namespace BookSystemWindows
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(146, 55);
+            this.textBox4.Location = new System.Drawing.Point(164, 58);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(117, 20);
             this.textBox4.TabIndex = 14;
@@ -257,6 +257,7 @@ namespace BookSystemWindows
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

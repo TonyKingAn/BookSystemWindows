@@ -56,11 +56,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RentBooksDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RentBooksDialog.Designer.cs">
+      <DependentUpon>RentBooksDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateBookDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateBookDialog.Designer.cs">
+      <DependentUpon>UpdateBookDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateBookDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CreateBookDialog.Designer.cs">
       <DependentUpon>CreateBookDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateUserDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateUserDialog.Designer.cs">
+      <DependentUpon>UpdateUserDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateUserDialog.cs">
       <SubType>Form</SubType>
@@ -82,8 +100,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="RentBooksDialog.resx">
+      <DependentUpon>RentBooksDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateBookDialog.resx">
+      <DependentUpon>UpdateBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateBookDialog.resx">
       <DependentUpon>CreateBookDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateUserDialog.resx">
+      <DependentUpon>UpdateUserDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateUserDialog.resx">
       <DependentUpon>CreateUserDialog.cs</DependentUpon>

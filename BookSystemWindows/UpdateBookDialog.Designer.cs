@@ -2,7 +2,7 @@
 
 namespace BookSystemWindows
 {
-    partial class CreateBookDialog
+    partial class UpdateBookDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -98,7 +98,7 @@ namespace BookSystemWindows
             this.confirm_btn.UseVisualStyleBackColor = true;
             this.confirm_btn.Click += new System.EventHandler(this.confirm_btn_Click);
             // 
-            // CreateBookDialog
+            // UpdateBookDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -110,10 +110,10 @@ namespace BookSystemWindows
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "CreateBookDialog";
+            this.Name = "UpdateBookDialog";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "新建书籍";
+            this.Text = "修改书籍";
             this.ResumeLayout(false);
             this.PerformLayout();
 

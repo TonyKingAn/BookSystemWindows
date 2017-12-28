@@ -67,12 +67,15 @@ namespace BookSystemWindows
 
         private void CreateUserTip_Click(object sender, EventArgs e)
         {
+            var createUserDialog = new CreateUserDialog();
+            createUserDialog.ShowDialog();
 
         }
 
         private void UpdateUserTip_Click(object sender, EventArgs e)
         {
-
+            var updateUserDialog = new UpdateUserDialog();
+            updateUserDialog.ShowDialog();
         }
 
         private void listview_SizeChanged(object sender, EventArgs e)
@@ -87,7 +90,8 @@ namespace BookSystemWindows
 
         private void UpdateBook_Click(object sender, EventArgs e)
         {
-
+            var updateBookDialog = new UpdateBookDialog();
+            updateBookDialog.ShowDialog();
         }
 
         private void DeleteBooks_Click(object sender, EventArgs e)
@@ -109,7 +113,8 @@ namespace BookSystemWindows
 
         private void RentBooks_Click(object sender, EventArgs e)
         {
-
+            var rentBooksDialog = new RentBooksDialog();
+            rentBooksDialog.ShowDialog();
         }
 
         private void ReturnBooks_Click(object sender, EventArgs e)

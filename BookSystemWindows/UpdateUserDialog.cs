@@ -2,9 +2,9 @@
 
 namespace BookSystemWindows
 {
-    public partial class CreateUserDialog : Form
+    public partial class UpdateUserDialog : Form
     {
-        public CreateUserDialog()
+        public UpdateUserDialog()
         {
             InitializeComponent();
         }
