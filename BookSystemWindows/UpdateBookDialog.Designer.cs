@@ -78,6 +78,7 @@ namespace BookSystemWindows
             this.bookNumber_txt.Location = new System.Drawing.Point(206, 144);
             this.bookNumber_txt.Name = "bookNumber_txt";
             this.bookNumber_txt.Size = new System.Drawing.Size(179, 20);
+            this.bookNumber_txt.ReadOnly = true;
             this.bookNumber_txt.TabIndex = 4;
             // 
             // bookType_cb

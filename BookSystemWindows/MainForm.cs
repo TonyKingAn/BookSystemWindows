@@ -90,7 +90,14 @@ namespace BookSystemWindows
 
         private void UpdateBook_Click(object sender, EventArgs e)
         {
-            var updateBookDialog = new UpdateBookDialog();
+            if (this.BookDetailList.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("只能修改一本书，请勿多选");
+            }
+
+            var bookNumber = this.BookDetailList.SelectedItems[0].SubItems[0].Text;
+
+            var updateBookDialog = new UpdateBookDialog(bookNumber);
             updateBookDialog.ShowDialog();
         }
 

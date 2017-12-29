@@ -22,6 +22,11 @@ namespace BookSystemCommon.Models.Biz
             var result = false;
             using (var db = Heart.CreateBookDbContext())
             {
+                var existedBook = db.Books.FirstOrDefault(b => b.BookNumber == source.BookNumber);
+                if (existedBook != null)
+                {
+                    throw new Exception("书籍编码已存在");
+                }
                 var createBook = new Book()
                 {
                     Id = Guid.NewGuid(),
@@ -67,6 +72,28 @@ namespace BookSystemCommon.Models.Biz
                 }
             }
         }
+
+        public void DeleteBook(List<string> bookNumbers)
+        {
+            if (!bookNumbers.Any())
+            {
+                return;
+            }
+            using (var db = Heart.CreateBookDbContext())
+            {
+                var deleteBooks = new List<Book>();
+
+                foreach (var bookNumber in bookNumbers)
+                {
+                    var existedBook = db.Books.FirstOrDefault(b => b.BookNumber == bookNumber);
+                    deleteBooks.Add(existedBook);
+                }
+
+                db.Books.RemoveRange(deleteBooks);
+                db.SaveChanges();
+            }
+        }
+
 
     }
 }
