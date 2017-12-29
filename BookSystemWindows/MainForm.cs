@@ -1,4 +1,5 @@
 ﻿using BookSystemCommon.Models;
+using BookSystemCommon.Models.Biz;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +18,12 @@ namespace BookSystemWindows
         private List<string> bookDetailHeaders = new List<string>() {
             "书号",
             "书名",
+            "类型",
             "是否可借",
             "借阅人",
             "租借日期",
             "租借天数",
             "剩余时间",
-            "操作"
         };
 
         private void InitializeBookDetails()
@@ -46,7 +47,9 @@ namespace BookSystemWindows
                 {
                     ListViewItem item = new ListViewItem(book.BookNumber);
                     //item.SubItems.Add(book.BookNumber);
+                    var bookType = BizManager.BooksBiz.GetBookTypes();
                     item.SubItems.Add(book.Name);
+                    item.SubItems.Add(bookType[book.Type]);
                     item.SubItems.Add(db.RentBooks.Any(rb => rb.BookId == book.Id && rb.IsReturn == false) ? "不可借阅" : "可借阅");
                     this.BookDetailList.Items.Add(item);
                 }
@@ -63,19 +66,6 @@ namespace BookSystemWindows
         {
             var createBookDialog = new CreateBookDialog(() => { InitializeBookDetails(); });
             createBookDialog.ShowDialog();
-        }
-
-        private void CreateUserTip_Click(object sender, EventArgs e)
-        {
-            var createUserDialog = new CreateUserDialog(() => { InitializeBookDetails(); });
-            createUserDialog.ShowDialog();
-
-        }
-
-        private void UpdateUserTip_Click(object sender, EventArgs e)
-        {
-            var updateUserDialog = new UpdateUserDialog();
-            updateUserDialog.ShowDialog();
         }
 
         private void listview_SizeChanged(object sender, EventArgs e)
@@ -95,6 +85,12 @@ namespace BookSystemWindows
 
         private void UpdateBook_Click(object sender, EventArgs e)
         {
+            if (this.BookDetailList.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("请选择要修改的书籍");
+                return;
+            }
+
             if (this.BookDetailList.SelectedItems.Count > 1)
             {
                 MessageBox.Show("只能修改一本书，请勿多选");
@@ -102,12 +98,18 @@ namespace BookSystemWindows
 
             var bookNumber = this.BookDetailList.SelectedItems[0].SubItems[0].Text;
 
-            var updateBookDialog = new UpdateBookDialog(bookNumber);
+            var updateBookDialog = new UpdateBookDialog(bookNumber, () => { InitializeBookDetails(); });
             updateBookDialog.ShowDialog();
         }
 
         private void DeleteBooks_Click(object sender, EventArgs e)
         {
+            if(this.BookDetailList.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("请选择要删除的书籍");
+                return;
+            }
+
             using (var db = Heart.CreateBookDbContext())
             {
                 List<Book> deleteBook = new List<Book>();
@@ -116,11 +118,29 @@ namespace BookSystemWindows
                 {
                     var bookNumber = this.BookDetailList.SelectedItems[i].SubItems[0].Text;
                     deleteBook.Add(db.Books.FirstOrDefault(b => b.BookNumber == bookNumber)); // 书号
+                    if (BizManager.UserRentBiz.RelatedRent(bookNumber))
+                    {
+                        message += $"{bookNumber}";
+                    }
                 }
 
-                db.Books.RemoveRange(deleteBook);
-                db.SaveChanges();
-                InitializeBookDetails();
+                if (!string.IsNullOrEmpty(message))
+                {
+                    message = message.TrimEnd(',') + "这些书籍有历史借阅记录，删除会影响数据统计，是否确认修改？";
+                }
+                else
+                {
+                    message = "是否要修改当前数据？";
+                }
+
+                var result = MessageBox.Show(message, "删除提示", MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.OK)
+                {
+                    db.Books.RemoveRange(deleteBook);
+                    db.SaveChanges();
+                    InitializeBookDetails();
+                }
             }
         }
 
@@ -131,11 +151,6 @@ namespace BookSystemWindows
         }
 
         private void ReturnBooks_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
         {
 
         }

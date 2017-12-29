@@ -55,15 +55,10 @@ namespace BookSystemCommon.Models.Biz
 
                 if (source != null)
                 {
-                    var createBook = new Book()
-                    {
-                        Id = Guid.NewGuid(),
-                        BookNumber = source.BookNumber,
-                        Name = source.Name,
-                        Type = source.Type
-                    };
+                    db.Books.Attach(source);
+                    source.Name = updateSource.Name;
+                    source.Type = updateSource.Type;
 
-                    db.Books.Add(createBook);
                     db.SaveChanges();
                 }
                 else

@@ -25,6 +25,7 @@ namespace BookSystemWindows
             "生日",
             "过期时间",
             "备注",
+            "状态"
         };
 
         private void InitializeUserDetails()
@@ -50,6 +51,9 @@ namespace BookSystemWindows
                     item.SubItems.Add(user.Birthday.ToString());
                     item.SubItems.Add(user.ExpireTime.ToString());
                     item.SubItems.Add(user.Comments.ToString());
+
+                    item.SubItems.Add(user.ExpireTime > DateTime.Now ? "未过期" : "已过期");
+
                     item.SubItems.Add(user.Id.ToString());
                     this.userDetailList.Items.Add(item);
                     this.userDetailList.Columns[0].Width = 0;
@@ -87,7 +91,21 @@ namespace BookSystemWindows
 
         private void updateUser_btn_Click(object sender, EventArgs e)
         {
-            var updateUserDialog = new UpdateUserDialog();
+            if (this.userDetailList.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("未选择需修改的用户");
+                return;
+            }
+
+            if (this.userDetailList.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("只能修改一个用户，请勿多选");
+                return;
+            }
+
+            var userId = this.userDetailList.SelectedItems[0].SubItems[6].Text; //userId
+
+            var updateUserDialog = new UpdateUserDialog(() => { InitializeUserDetails(); }, Guid.Parse(userId));
             updateUserDialog.ShowDialog();
         }
     }

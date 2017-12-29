@@ -56,6 +56,13 @@ namespace BookSystemCommon.Models.Biz
             }
         }
 
+        public User GetUserById(Guid userId)
+        {
+            using (var db = Heart.CreateBookDbContext())
+            {
+                return db.Users.FirstOrDefault(u => u.Id == userId);
+            }
+        }
         public void DeleteUser(List<Guid> userIds)
         {
             if (!userIds.Any())

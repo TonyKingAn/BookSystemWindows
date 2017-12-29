@@ -10,11 +10,17 @@ namespace BookSystemWindows
     public partial class UpdateBookDialog : Form
     {
         private string orignialBookNumber = string.Empty;
+        private delegate void SuccessEventHandler();
+        SuccessEventHandler successCallBack;
 
-        public UpdateBookDialog(string bookNumber)
+        public UpdateBookDialog(string bookNumber, Action action)
         {
             InitializeComponent();
             orignialBookNumber = bookNumber;
+            if (action != null)
+            {
+                successCallBack = new SuccessEventHandler(action);
+            }
             InitlizationBook(bookNumber);
         }
 
@@ -33,7 +39,7 @@ namespace BookSystemWindows
                     this.bookType_cb.DataSource = bs;
                     bookType_cb.ValueMember = "Key";
                     bookType_cb.DisplayMember = "Value";
-                    bookType_cb.SelectedIndex = bookType_cb.Items.IndexOf(book.Type.ToString());
+                    bookType_cb.Text = bookType[book.Type];
                     this.bookNumber_txt.Text = book.BookNumber;
                 }
             }
@@ -73,9 +79,9 @@ namespace BookSystemWindows
                     };
                     BizManager.BooksBiz.UpdateBook(createBook);
                 }
-
+                this.Hide();
+                successCallBack();
             }
-
         }
     }
 }
