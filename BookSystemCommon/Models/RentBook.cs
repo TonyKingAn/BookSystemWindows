@@ -22,6 +22,7 @@ namespace BookSystemCommon.Models
 
         public string Comments { get; set; }
 
+        public DateTime ActualReturnDate { get; set; }
         public bool IsReturn { get; set; }
     }
 }

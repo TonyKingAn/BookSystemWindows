@@ -25,7 +25,6 @@ namespace BookSystemWindows
             "操作"
         };
 
-
         private void InitializeBookDetails()
         {
             ClearListView();
@@ -52,6 +51,7 @@ namespace BookSystemWindows
                     this.BookDetailList.Items.Add(item);
                 }
             }
+            dynamicSizeChange();
         }
 
         private void ClearListView()
@@ -67,7 +67,7 @@ namespace BookSystemWindows
 
         private void CreateUserTip_Click(object sender, EventArgs e)
         {
-            var createUserDialog = new CreateUserDialog();
+            var createUserDialog = new CreateUserDialog(() => { InitializeBookDetails(); });
             createUserDialog.ShowDialog();
 
         }
@@ -79,6 +79,11 @@ namespace BookSystemWindows
         }
 
         private void listview_SizeChanged(object sender, EventArgs e)
+        {
+            dynamicSizeChange();
+        }
+
+        private void dynamicSizeChange()
         {
             int _Count = BookDetailList.Columns.Count;
             int _Width = BookDetailList.Width;
@@ -106,6 +111,7 @@ namespace BookSystemWindows
             using (var db = Heart.CreateBookDbContext())
             {
                 List<Book> deleteBook = new List<Book>();
+                string message = string.Empty;
                 for (int i = 0; i < this.BookDetailList.SelectedItems.Count; i++)
                 {
                     var bookNumber = this.BookDetailList.SelectedItems[i].SubItems[0].Text;
@@ -132,6 +138,12 @@ namespace BookSystemWindows
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void userDetailTip_Click(object sender, EventArgs e)
+        {
+            UserDetailPage uPage = new UserDetailPage();
+            uPage.ShowDialog();
         }
     }
 }

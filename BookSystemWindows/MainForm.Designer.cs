@@ -34,8 +34,7 @@ namespace BookSystemWindows
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateBooksTip = new System.Windows.Forms.ToolStripMenuItem();
             this.UserManger = new System.Windows.Forms.ToolStripMenuItem();
-            this.CreateUserTip = new System.Windows.Forms.ToolStripMenuItem();
-            this.UpdateUserTip = new System.Windows.Forms.ToolStripMenuItem();
+            this.userDetail_tip = new System.Windows.Forms.ToolStripMenuItem();
             this.BookDetailList = new System.Windows.Forms.ListView();
             this.UpdateBook = new System.Windows.Forms.Button();
             this.DeleteBooks = new System.Windows.Forms.Button();
@@ -69,38 +68,30 @@ namespace BookSystemWindows
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CreateBooksTip});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(69, 20);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(71, 20);
             this.toolStripMenuItem1.Text = "图书管理";
             // 
             // CreateBooksTip
             // 
             this.CreateBooksTip.Name = "CreateBooksTip";
-            this.CreateBooksTip.Size = new System.Drawing.Size(124, 22);
+            this.CreateBooksTip.Size = new System.Drawing.Size(126, 22);
             this.CreateBooksTip.Text = "新增图书";
             this.CreateBooksTip.Click += new System.EventHandler(this.CreateBooks);
             // 
             // UserManger
             // 
             this.UserManger.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CreateUserTip,
-            this.UpdateUserTip});
+            this.userDetail_tip});
             this.UserManger.Name = "UserManger";
-            this.UserManger.Size = new System.Drawing.Size(68, 20);
+            this.UserManger.Size = new System.Drawing.Size(71, 20);
             this.UserManger.Text = "用户管理";
             // 
-            // CreateUserTip
+            // userDetail_tip
             // 
-            this.CreateUserTip.Name = "CreateUserTip";
-            this.CreateUserTip.Size = new System.Drawing.Size(123, 22);
-            this.CreateUserTip.Text = "新增用户";
-            this.CreateUserTip.Click += new System.EventHandler(this.CreateUserTip_Click);
-            // 
-            // UpdateUserTip
-            // 
-            this.UpdateUserTip.Name = "UpdateUserTip";
-            this.UpdateUserTip.Size = new System.Drawing.Size(123, 22);
-            this.UpdateUserTip.Text = "修改用户";
-            this.UpdateUserTip.Click += new System.EventHandler(this.UpdateUserTip_Click);
+            this.userDetail_tip.Name = "userDetail_tip";
+            this.userDetail_tip.Size = new System.Drawing.Size(152, 22);
+            this.userDetail_tip.Text = "用户详情";
+            this.userDetail_tip.Click += new System.EventHandler(this.userDetailTip_Click);
             // 
             // BookDetailList
             // 
@@ -163,7 +154,7 @@ namespace BookSystemWindows
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(77, 103);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 15);
+            this.label1.Size = new System.Drawing.Size(67, 15);
             this.label1.TabIndex = 6;
             this.label1.Text = "图书名称：";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -173,7 +164,7 @@ namespace BookSystemWindows
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(325, 57);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "作者姓名：";
             // 
@@ -206,7 +197,7 @@ namespace BookSystemWindows
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(325, 105);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 13);
+            this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 11;
             this.label3.Text = "图书编号：";
             // 
@@ -224,7 +215,7 @@ namespace BookSystemWindows
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(77, 61);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 13);
+            this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 13;
             this.label4.Text = "关键字词：";
             // 
@@ -272,8 +263,6 @@ namespace BookSystemWindows
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem CreateBooksTip;
         private System.Windows.Forms.ToolStripMenuItem UserManger;
-        private System.Windows.Forms.ToolStripMenuItem CreateUserTip;
-        private System.Windows.Forms.ToolStripMenuItem UpdateUserTip;
         private System.Windows.Forms.ListView BookDetailList;
         private System.Windows.Forms.Button UpdateBook;
         private System.Windows.Forms.Button DeleteBooks;
@@ -288,5 +277,6 @@ namespace BookSystemWindows
         private Button button1;
         private Label label4;
         private TextBox textBox4;
+        private ToolStripMenuItem userDetail_tip;
     }
 }
