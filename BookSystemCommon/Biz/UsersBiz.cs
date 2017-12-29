@@ -77,7 +77,7 @@ namespace BookSystemCommon.Models.Biz
                 foreach (var id in userIds)
                 {
                     var user = db.Users.FirstOrDefault(u => u.Id == id);
-                    if (user != null)
+                    if (user == null)
                     {
                         throw new Exception($"无法删除当前用户，用户id:{id}");
                     }

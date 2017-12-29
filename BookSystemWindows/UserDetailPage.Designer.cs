@@ -35,6 +35,7 @@
             this.用户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createUser_btn = new System.Windows.Forms.ToolStripMenuItem();
             this.updateUser_btn = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteUser_btn = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,7 +84,8 @@
             // 
             this.用户管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createUser_btn,
-            this.updateUser_btn});
+            this.updateUser_btn,
+            this.deleteUser_btn});
             this.用户管理ToolStripMenuItem.Name = "用户管理ToolStripMenuItem";
             this.用户管理ToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.用户管理ToolStripMenuItem.Text = "用户管理";
@@ -101,6 +103,13 @@
             this.updateUser_btn.Size = new System.Drawing.Size(152, 22);
             this.updateUser_btn.Text = "修改用户";
             this.updateUser_btn.Click += new System.EventHandler(this.updateUser_btn_Click);
+            // 
+            // deleteUser_btn
+            // 
+            this.deleteUser_btn.Name = "deleteUser_btn";
+            this.deleteUser_btn.Size = new System.Drawing.Size(152, 22);
+            this.deleteUser_btn.Text = "删除用户";
+            this.deleteUser_btn.Click += new System.EventHandler(this.deleteUser_btn_Click);
             // 
             // UserDetailPage
             // 
@@ -130,5 +139,6 @@
         private System.Windows.Forms.ToolStripMenuItem 用户管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createUser_btn;
         private System.Windows.Forms.ToolStripMenuItem updateUser_btn;
+        private System.Windows.Forms.ToolStripMenuItem deleteUser_btn;
     }
 }
