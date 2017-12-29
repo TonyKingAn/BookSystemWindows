@@ -14,10 +14,27 @@ namespace BookSystemWindows
 {
     public partial class UserDetailPage : Form
     {
+        public Action<Tuple<Guid, string>> successCallback;
+        private string operationType = string.Empty;
+
         public UserDetailPage()
         {
             InitializeComponent();
             InitializeUserDetails();
+            this.submit_btn.Visible = false;
+        }
+
+        public UserDetailPage(string type, Action<Tuple<Guid, string>> action)
+        {
+            InitializeComponent();
+            InitializeUserDetails();
+            operationType = type;
+            if (action != null)
+            {
+                successCallback = action;
+            }
+
+            this.submit_btn.Visible = true;
         }
 
         private List<string> userDetailHeaders = new List<string>() {
@@ -146,6 +163,26 @@ namespace BookSystemWindows
                 BizManager.UsersBiz.DeleteUser(deleteUserIds);
             }
             InitializeUserDetails();
+        }
+
+        private void submit_btn_Click(object sender, EventArgs e)
+        {
+            if (this.userDetailList.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("未选择用户");
+                return;
+            }
+
+            if (this.userDetailList.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("只能选择一个用户");
+                return;
+            }
+
+            var userId = this.userDetailList.SelectedItems[0].SubItems[6].Text;//userId
+            Tuple<Guid, string> user = new Tuple<Guid, string>(Guid.Parse(userId), this.userDetailList.SelectedItems[0].SubItems[0].Text);
+            successCallback(user);
+            this.Hide();
         }
     }
 }

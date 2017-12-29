@@ -28,141 +28,174 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.bookName_txt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.bookRentDate_dp = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.bookReturn_dp = new System.Windows.Forms.DateTimePicker();
+            this.submit_btn = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.bookNumber_txt = new System.Windows.Forms.TextBox();
+            this.bookType_txt = new System.Windows.Forms.TextBox();
+            this.cancel_btn = new System.Windows.Forms.Button();
+            this.userInfo_txt = new System.Windows.Forms.TextBox();
+            this.selectUser_btn = new System.Windows.Forms.Button();
+            this.userId_txt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // textBox1
+            // bookName_txt
             // 
-            this.textBox1.Location = new System.Drawing.Point(208, 63);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 0;
+            this.bookName_txt.Location = new System.Drawing.Point(191, 53);
+            this.bookName_txt.Name = "bookName_txt";
+            this.bookName_txt.ReadOnly = true;
+            this.bookName_txt.Size = new System.Drawing.Size(200, 20);
+            this.bookName_txt.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(120, 66);
+            this.label1.Location = new System.Drawing.Point(101, 56);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.Size = new System.Drawing.Size(67, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "书籍名称：";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(120, 118);
+            this.label2.Location = new System.Drawing.Point(101, 140);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "书籍类型：";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(208, 115);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 21);
-            this.comboBox1.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(117, 179);
+            this.label3.Location = new System.Drawing.Point(102, 193);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 13);
+            this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "借阅时间：";
             // 
-            // dateTimePicker1
+            // bookRentDate_dp
             // 
-            this.dateTimePicker1.CustomFormat = "yyyy年MM月dd日 HH:mm:ss";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(208, 173);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 5;
+            this.bookRentDate_dp.CustomFormat = "yyyy年MM月dd日";
+            this.bookRentDate_dp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.bookRentDate_dp.Location = new System.Drawing.Point(191, 189);
+            this.bookRentDate_dp.Name = "bookRentDate_dp";
+            this.bookRentDate_dp.Size = new System.Drawing.Size(200, 20);
+            this.bookRentDate_dp.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(120, 235);
+            this.label4.Location = new System.Drawing.Point(103, 244);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 13);
+            this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "归还时间：";
             // 
-            // dateTimePicker2
+            // bookReturn_dp
             // 
-            this.dateTimePicker2.CustomFormat = "yyyy年MM月dd日 HH:mm:ss";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(208, 229);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 7;
+            this.bookReturn_dp.CustomFormat = "yyyy年MM月dd日";
+            this.bookReturn_dp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.bookReturn_dp.Location = new System.Drawing.Point(191, 241);
+            this.bookReturn_dp.Name = "bookReturn_dp";
+            this.bookReturn_dp.Size = new System.Drawing.Size(200, 20);
+            this.bookReturn_dp.TabIndex = 7;
             // 
-            // textBox2
+            // submit_btn
             // 
-            this.textBox2.Location = new System.Drawing.Point(208, 284);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 63);
-            this.textBox2.TabIndex = 8;
+            this.submit_btn.Location = new System.Drawing.Point(167, 322);
+            this.submit_btn.Name = "submit_btn";
+            this.submit_btn.Size = new System.Drawing.Size(82, 31);
+            this.submit_btn.TabIndex = 11;
+            this.submit_btn.Text = "提交";
+            this.submit_btn.UseVisualStyleBackColor = true;
+            this.submit_btn.Click += new System.EventHandler(this.submit_btn_Click);
             // 
-            // label5
+            // label6
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(120, 287);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "备      注：";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(102, 95);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "书籍编码：";
             // 
-            // button1
+            // bookNumber_txt
             // 
-            this.button1.Location = new System.Drawing.Point(155, 387);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 31);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "重置";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bookNumber_txt.Location = new System.Drawing.Point(191, 95);
+            this.bookNumber_txt.Name = "bookNumber_txt";
+            this.bookNumber_txt.Size = new System.Drawing.Size(200, 20);
+            this.bookNumber_txt.TabIndex = 13;
             // 
-            // button2
+            // bookType_txt
             // 
-            this.button2.Location = new System.Drawing.Point(338, 386);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(82, 31);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "确定";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bookType_txt.Location = new System.Drawing.Point(191, 140);
+            this.bookType_txt.Name = "bookType_txt";
+            this.bookType_txt.ReadOnly = true;
+            this.bookType_txt.Size = new System.Drawing.Size(200, 20);
+            this.bookType_txt.TabIndex = 14;
+            // 
+            // cancel_btn
+            // 
+            this.cancel_btn.Location = new System.Drawing.Point(318, 322);
+            this.cancel_btn.Name = "cancel_btn";
+            this.cancel_btn.Size = new System.Drawing.Size(82, 31);
+            this.cancel_btn.TabIndex = 10;
+            this.cancel_btn.Text = "取消";
+            this.cancel_btn.UseVisualStyleBackColor = true;
+            this.cancel_btn.Click += new System.EventHandler(this.cancel_btn_Click);
+            // 
+            // userInfo_txt
+            // 
+            this.userInfo_txt.Location = new System.Drawing.Point(191, 278);
+            this.userInfo_txt.Name = "userInfo_txt";
+            this.userInfo_txt.ReadOnly = true;
+            this.userInfo_txt.Size = new System.Drawing.Size(200, 20);
+            this.userInfo_txt.TabIndex = 15;
+            // 
+            // selectUser_btn
+            // 
+            this.selectUser_btn.Location = new System.Drawing.Point(93, 277);
+            this.selectUser_btn.Name = "selectUser_btn";
+            this.selectUser_btn.Size = new System.Drawing.Size(75, 23);
+            this.selectUser_btn.TabIndex = 16;
+            this.selectUser_btn.Text = "选择用户";
+            this.selectUser_btn.UseVisualStyleBackColor = true;
+            this.selectUser_btn.Click += new System.EventHandler(this.selectUser_btn_Click);
+            // 
+            // userId_txt
+            // 
+            this.userId_txt.Location = new System.Drawing.Point(191, 22);
+            this.userId_txt.Name = "userId_txt";
+            this.userId_txt.Size = new System.Drawing.Size(100, 20);
+            this.userId_txt.TabIndex = 17;
             // 
             // RentBooksDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(557, 479);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.dateTimePicker2);
+            this.ClientSize = new System.Drawing.Size(531, 409);
+            this.Controls.Add(this.userId_txt);
+            this.Controls.Add(this.selectUser_btn);
+            this.Controls.Add(this.userInfo_txt);
+            this.Controls.Add(this.bookType_txt);
+            this.Controls.Add(this.bookNumber_txt);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.submit_btn);
+            this.Controls.Add(this.cancel_btn);
+            this.Controls.Add(this.bookReturn_dp);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.bookRentDate_dp);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.bookName_txt);
             this.Name = "RentBooksDialog";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -174,19 +207,20 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox bookName_txt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker bookRentDate_dp;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-
-       
+        private System.Windows.Forms.DateTimePicker bookReturn_dp;
+        private System.Windows.Forms.Button submit_btn;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox bookNumber_txt;
+        private System.Windows.Forms.TextBox bookType_txt;
+        private System.Windows.Forms.Button cancel_btn;
+        private System.Windows.Forms.TextBox userInfo_txt;
+        private System.Windows.Forms.Button selectUser_btn;
+        private System.Windows.Forms.TextBox userId_txt;
     }
 }

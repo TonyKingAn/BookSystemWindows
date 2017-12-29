@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BookSystemCommon.Models.Biz
 {
@@ -72,6 +73,29 @@ namespace BookSystemCommon.Models.Biz
                 var userId = Guid.Parse(keyWord);
 
                 return db.RentBooks.Any(rb => rb.UserId == userId);
+            }
+        }
+
+        public bool IsBookRented(string bookNumber)
+        {
+            using (var db = Heart.CreateBookDbContext())
+            {
+
+                var book = db.Books.FirstOrDefault(b => b.BookNumber == bookNumber);
+                if (book == null)
+                {
+                    MessageBox.Show("未找到当前书籍");
+                }
+
+                return db.RentBooks.Any(rb => rb.BookId == book.Id && rb.IsReturn == false);
+            }
+        }
+
+        public RentBook GetRentInfoByBookId(Guid bookId)
+        {
+            using (var db = Heart.CreateBookDbContext())
+            {
+                return db.RentBooks.FirstOrDefault(rb => rb.BookId == bookId && rb.IsReturn == false);
             }
         }
 

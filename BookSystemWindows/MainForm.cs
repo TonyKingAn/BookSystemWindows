@@ -51,6 +51,17 @@ namespace BookSystemWindows
                     item.SubItems.Add(book.Name);
                     item.SubItems.Add(bookType[book.Type]);
                     item.SubItems.Add(db.RentBooks.Any(rb => rb.BookId == book.Id && rb.IsReturn == false) ? "不可借阅" : "可借阅");
+                    // user's properties
+                    var rentBook = BizManager.UserRentBiz.GetRentInfoByBookId(book.Id);
+                    if (rentBook != null)
+                    {
+                        var user = BizManager.UsersBiz.GetUserById(rentBook.UserId);
+                        item.SubItems.Add(user.Name);
+                        item.SubItems.Add(rentBook.RentDate.ToString("yyyy年MM月dd日"));
+                        item.SubItems.Add((rentBook.ReturnDate.Day - rentBook.RentDate.Day).ToString());
+                        item.SubItems.Add((rentBook.ReturnDate.Day - DateTime.Now.Day).ToString());
+                    }
+
                     this.BookDetailList.Items.Add(item);
                 }
             }
@@ -104,7 +115,7 @@ namespace BookSystemWindows
 
         private void DeleteBooks_Click(object sender, EventArgs e)
         {
-            if(this.BookDetailList.SelectedItems.Count == 0)
+            if (this.BookDetailList.SelectedItems.Count == 0)
             {
                 MessageBox.Show("请选择要删除的书籍");
                 return;
@@ -146,7 +157,13 @@ namespace BookSystemWindows
 
         private void RentBooks_Click(object sender, EventArgs e)
         {
-            var rentBooksDialog = new RentBooksDialog();
+            var bookNumber = this.BookDetailList.SelectedItems[0].SubItems[0].Text;
+
+            if (BizManager.UserRentBiz.IsBookRented(bookNumber))
+            {
+
+            }
+            var rentBooksDialog = new RentBooksDialog(bookNumber, () => { InitializeBookDetails(); });
             rentBooksDialog.ShowDialog();
         }
 

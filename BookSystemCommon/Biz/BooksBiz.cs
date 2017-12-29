@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BookSystemCommon.Models.Biz
 {
@@ -15,6 +16,14 @@ namespace BookSystemCommon.Models.Biz
             bookType.Add(BookType.Childern, "儿童");
 
             return bookType;
+        }
+
+        public Book GetBookByBookNumber(string bookNumber)
+        {
+            using (var db = Heart.CreateBookDbContext())
+            {
+                return db.Books.FirstOrDefault(b => b.BookNumber == bookNumber);
+            }
         }
 
         public bool CreateBook(Book source)

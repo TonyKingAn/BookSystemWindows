@@ -36,6 +36,7 @@
             this.createUser_btn = new System.Windows.Forms.ToolStripMenuItem();
             this.updateUser_btn = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteUser_btn = new System.Windows.Forms.ToolStripMenuItem();
+            this.submit_btn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,29 +94,40 @@
             // createUser_btn
             // 
             this.createUser_btn.Name = "createUser_btn";
-            this.createUser_btn.Size = new System.Drawing.Size(152, 22);
+            this.createUser_btn.Size = new System.Drawing.Size(126, 22);
             this.createUser_btn.Text = "新建用户";
             this.createUser_btn.Click += new System.EventHandler(this.createUser_btn_Click);
             // 
             // updateUser_btn
             // 
             this.updateUser_btn.Name = "updateUser_btn";
-            this.updateUser_btn.Size = new System.Drawing.Size(152, 22);
+            this.updateUser_btn.Size = new System.Drawing.Size(126, 22);
             this.updateUser_btn.Text = "修改用户";
             this.updateUser_btn.Click += new System.EventHandler(this.updateUser_btn_Click);
             // 
             // deleteUser_btn
             // 
             this.deleteUser_btn.Name = "deleteUser_btn";
-            this.deleteUser_btn.Size = new System.Drawing.Size(152, 22);
+            this.deleteUser_btn.Size = new System.Drawing.Size(126, 22);
             this.deleteUser_btn.Text = "删除用户";
             this.deleteUser_btn.Click += new System.EventHandler(this.deleteUser_btn_Click);
+            // 
+            // submit_btn
+            // 
+            this.submit_btn.Location = new System.Drawing.Point(428, 63);
+            this.submit_btn.Name = "submit_btn";
+            this.submit_btn.Size = new System.Drawing.Size(75, 23);
+            this.submit_btn.TabIndex = 4;
+            this.submit_btn.Text = "确定";
+            this.submit_btn.UseVisualStyleBackColor = true;
+            this.submit_btn.Click += new System.EventHandler(this.submit_btn_Click);
             // 
             // UserDetailPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 452);
+            this.Controls.Add(this.submit_btn);
             this.Controls.Add(this.search_btn);
             this.Controls.Add(this.keyword_txt);
             this.Controls.Add(this.userDetailList);
@@ -140,5 +152,6 @@
         private System.Windows.Forms.ToolStripMenuItem createUser_btn;
         private System.Windows.Forms.ToolStripMenuItem updateUser_btn;
         private System.Windows.Forms.ToolStripMenuItem deleteUser_btn;
+        private System.Windows.Forms.Button submit_btn;
     }
 }
