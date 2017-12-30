@@ -132,6 +132,7 @@
             this.bookNumber_txt.Name = "bookNumber_txt";
             this.bookNumber_txt.Size = new System.Drawing.Size(200, 20);
             this.bookNumber_txt.TabIndex = 13;
+            this.bookName_txt.ReadOnly = true;
             // 
             // bookType_txt
             // 
