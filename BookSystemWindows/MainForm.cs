@@ -73,6 +73,59 @@ namespace BookSystemWindows
             dynamicSizeChange();
         }
 
+        private void UpdateBookDetails(string keyword)
+        {
+            ClearListView();
+
+            // prepare column hearder
+            foreach (var headerName in bookDetailHeaders)
+            {
+                ColumnHeader clh = new ColumnHeader();
+                clh.Text = headerName;
+                BookDetailList.Columns.Add(clh);
+            }
+
+            using (var db = Heart.CreateBookDbContext())
+            {
+                List<Book> books = new List<Book>();
+                if (string.IsNullOrEmpty(keyword))
+                {
+                    books = db.Books.OrderBy(b => b.BookNumber).ToList();
+                }
+                else
+                {
+                    books = db.Books.Where(b => b.BookNumber.Contains(keyword) || b.Name.Contains(keyword)).OrderBy(b => b.BookNumber).ToList();
+                }
+
+                foreach (var book in books)
+                {
+                    ListViewItem item = new ListViewItem(book.BookNumber);
+                    //item.SubItems.Add(book.BookNumber);
+                    var bookType = BizManager.BooksBiz.GetBookTypes();
+                    item.SubItems.Add(book.Name);
+                    item.SubItems.Add(bookType[book.Type]);
+                    item.SubItems.Add(db.RentBooks.Any(rb => rb.BookId == book.Id && rb.IsReturn == false) ? "不可借阅" : "可借阅");
+                    // user's properties
+                    var rentBook = BizManager.UserRentBiz.GetRentInfoByBookId(book.Id);
+                    if (rentBook != null)
+                    {
+                        var user = BizManager.UsersBiz.GetUserById(rentBook.UserId);
+                        item.SubItems.Add(user.Name);
+                        item.SubItems.Add(rentBook.RentDate.ToString("yyyy年MM月dd日"));
+                        var rentDays = rentBook.ReturnDate - rentBook.RentDate;
+                        item.SubItems.Add(Math.Ceiling(rentDays.TotalDays).ToString());
+                        var day = rentBook.ReturnDate - DateTime.Now;
+                        item.SubItems.Add(Math.Ceiling(day.TotalDays).ToString());
+                        item.SubItems.Add(rentBook.ReturnDate < DateTime.Now ? "已超期" : "正常");     //状态 [8]
+                        item.SubItems.Add(rentBook.Id.ToString());// rent id [9]
+                    }
+
+                    this.BookDetailList.Items.Add(item);
+                }
+            }
+            dynamicSizeChange();
+        }
+
         private void ClearListView()
         {
             this.BookDetailList.Clear();
@@ -202,6 +255,11 @@ namespace BookSystemWindows
         {
             UserDetailPage uPage = new UserDetailPage();
             uPage.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UpdateBookDetails(this.keyword_txt.Text);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace BookSystemWindows
 {
@@ -40,15 +41,9 @@ namespace BookSystemWindows
             this.DeleteBooks = new System.Windows.Forms.Button();
             this.RentBooks = new System.Windows.Forms.Button();
             this.ReturnBooks = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.keyword_txt = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +84,7 @@ namespace BookSystemWindows
             // userDetail_tip
             // 
             this.userDetail_tip.Name = "userDetail_tip";
-            this.userDetail_tip.Size = new System.Drawing.Size(152, 22);
+            this.userDetail_tip.Size = new System.Drawing.Size(126, 22);
             this.userDetail_tip.Text = "用户详情";
             this.userDetail_tip.Click += new System.EventHandler(this.userDetailTip_Click);
             // 
@@ -100,9 +95,9 @@ namespace BookSystemWindows
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BookDetailList.FullRowSelect = true;
             this.BookDetailList.GridLines = true;
-            this.BookDetailList.Location = new System.Drawing.Point(37, 159);
+            this.BookDetailList.Location = new System.Drawing.Point(37, 113);
             this.BookDetailList.Name = "BookDetailList";
-            this.BookDetailList.Size = new System.Drawing.Size(1029, 305);
+            this.BookDetailList.Size = new System.Drawing.Size(1029, 309);
             this.BookDetailList.TabIndex = 1;
             this.BookDetailList.UseCompatibleStateImageBehavior = false;
             this.BookDetailList.View = System.Windows.Forms.View.Details;
@@ -110,7 +105,7 @@ namespace BookSystemWindows
             // 
             // UpdateBook
             // 
-            this.UpdateBook.Location = new System.Drawing.Point(794, 43);
+            this.UpdateBook.Location = new System.Drawing.Point(854, 61);
             this.UpdateBook.Name = "UpdateBook";
             this.UpdateBook.Size = new System.Drawing.Size(94, 34);
             this.UpdateBook.TabIndex = 2;
@@ -120,7 +115,7 @@ namespace BookSystemWindows
             // 
             // DeleteBooks
             // 
-            this.DeleteBooks.Location = new System.Drawing.Point(794, 96);
+            this.DeleteBooks.Location = new System.Drawing.Point(954, 61);
             this.DeleteBooks.Name = "DeleteBooks";
             this.DeleteBooks.Size = new System.Drawing.Size(94, 34);
             this.DeleteBooks.TabIndex = 3;
@@ -130,7 +125,7 @@ namespace BookSystemWindows
             // 
             // RentBooks
             // 
-            this.RentBooks.Location = new System.Drawing.Point(923, 96);
+            this.RentBooks.Location = new System.Drawing.Point(654, 61);
             this.RentBooks.Name = "RentBooks";
             this.RentBooks.Size = new System.Drawing.Size(94, 34);
             this.RentBooks.TabIndex = 4;
@@ -140,7 +135,7 @@ namespace BookSystemWindows
             // 
             // ReturnBooks
             // 
-            this.ReturnBooks.Location = new System.Drawing.Point(923, 44);
+            this.ReturnBooks.Location = new System.Drawing.Point(754, 61);
             this.ReturnBooks.Name = "ReturnBooks";
             this.ReturnBooks.Size = new System.Drawing.Size(94, 34);
             this.ReturnBooks.TabIndex = 5;
@@ -148,97 +143,40 @@ namespace BookSystemWindows
             this.ReturnBooks.UseVisualStyleBackColor = true;
             this.ReturnBooks.Click += new System.EventHandler(this.ReturnBooks_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(77, 103);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 15);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "图书名称：";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(325, 57);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "作者姓名：";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(164, 102);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(117, 20);
-            this.textBox1.TabIndex = 8;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(409, 58);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(120, 20);
-            this.textBox2.TabIndex = 9;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(409, 102);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(120, 20);
-            this.textBox3.TabIndex = 10;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(325, 105);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "图书编号：";
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(608, 68);
+            this.button1.Location = new System.Drawing.Point(431, 61);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 37);
+            this.button1.Size = new System.Drawing.Size(94, 32);
             this.button1.TabIndex = 12;
             this.button1.Text = "查询";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(77, 61);
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.label4.Location = new System.Drawing.Point(49, 72);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.Size = new System.Drawing.Size(181, 21);
             this.label4.TabIndex = 13;
-            this.label4.Text = "关键字词：";
+            this.label4.Text = "输入书名或书籍编码查询：";
             // 
-            // textBox4
+            // keyword_txt
             // 
-            this.textBox4.Location = new System.Drawing.Point(164, 58);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(117, 20);
-            this.textBox4.TabIndex = 14;
+            this.keyword_txt.Location = new System.Drawing.Point(229, 69);
+            this.keyword_txt.Name = "keyword_txt";
+            this.keyword_txt.Size = new System.Drawing.Size(187, 20);
+            this.keyword_txt.TabIndex = 14;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1104, 496);
-            this.Controls.Add(this.textBox4);
+            this.ClientSize = new System.Drawing.Size(1104, 452);
+            this.Controls.Add(this.keyword_txt);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.ReturnBooks);
             this.Controls.Add(this.RentBooks);
             this.Controls.Add(this.DeleteBooks);
@@ -267,15 +205,9 @@ namespace BookSystemWindows
         private System.Windows.Forms.Button DeleteBooks;
         private System.Windows.Forms.Button RentBooks;
         private System.Windows.Forms.Button ReturnBooks;
-        private Label label1;
-        private Label label2;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private Label label3;
         private Button button1;
         private Label label4;
-        private TextBox textBox4;
+        private TextBox keyword_txt;
         private ToolStripMenuItem userDetail_tip;
     }
 }
