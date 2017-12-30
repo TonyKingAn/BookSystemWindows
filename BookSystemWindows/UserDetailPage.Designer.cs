@@ -70,6 +70,7 @@
             this.search_btn.TabIndex = 2;
             this.search_btn.Text = "查询";
             this.search_btn.UseVisualStyleBackColor = true;
+            this.search_btn.Click += new System.EventHandler(this.search_btn_Click);
             // 
             // menuStrip1
             // 

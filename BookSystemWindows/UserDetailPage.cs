@@ -60,7 +60,49 @@ namespace BookSystemWindows
 
             using (var db = Heart.CreateBookDbContext())
             {
-                var users = db.Users.ToList();
+                var users = db.Users.OrderBy(u => u.Name).ToList();
+
+                foreach (var user in users)
+                {
+                    ListViewItem item = new ListViewItem(user.Name);
+                    item.SubItems.Add(user.Mobile);
+                    item.SubItems.Add(user.Birthday.ToString("yyyy年MM月dd日"));
+                    item.SubItems.Add(user.ExpireTime.ToString("yyyy年MM月dd日"));
+                    item.SubItems.Add(user.Comments.ToString());
+
+                    item.SubItems.Add(user.ExpireTime > DateTime.Now ? "未过期" : "已过期");
+
+                    item.SubItems.Add(user.Id.ToString());
+                    this.userDetailList.Items.Add(item);
+                    this.userDetailList.Columns[0].Width = 0;
+                }
+            }
+            dynamicSizeChange();
+        }
+
+        private void UpdateUserDetail(string keyword)
+        {
+            ClearListView();
+
+            // prepare column hearder
+            foreach (var headerName in userDetailHeaders)
+            {
+                ColumnHeader clh = new ColumnHeader();
+                clh.Text = headerName;
+                userDetailList.Columns.Add(clh);
+            }
+
+            using (var db = Heart.CreateBookDbContext())
+            {
+                List<User> users = new List<User>();
+                if (string.IsNullOrEmpty(keyword))
+                {
+                    users = db.Users.OrderBy(u => u.Name).ToList();
+                }
+                else
+                {
+                    users = db.Users.Where(u => u.Name.Contains(keyword) || u.Mobile.Contains(keyword)).OrderBy(u => u.Name).ToList();
+                }
 
                 foreach (var user in users)
                 {
@@ -183,6 +225,11 @@ namespace BookSystemWindows
             Tuple<Guid, string> user = new Tuple<Guid, string>(Guid.Parse(userId), this.userDetailList.SelectedItems[0].SubItems[0].Text);
             successCallback(user);
             this.Hide();
+        }
+
+        private void search_btn_Click(object sender, EventArgs e)
+        {
+            UpdateUserDetail(this.keyword_txt.Text);
         }
     }
 }

@@ -23,7 +23,8 @@ namespace BookSystemWindows
             "借阅人",
             "租借日期",
             "租借天数",
-            "剩余时间",
+            "间隔时间",
+            "状态"
         };
 
         private void InitializeBookDetails()
@@ -41,7 +42,7 @@ namespace BookSystemWindows
             using (var db = Heart.CreateBookDbContext())
             {
                 //  var user = db.Users.ToList();
-                var books = db.Books.ToList();
+                var books = db.Books.OrderBy(b => b.BookNumber).ToList();
 
                 foreach (var book in books)
                 {
@@ -58,8 +59,12 @@ namespace BookSystemWindows
                         var user = BizManager.UsersBiz.GetUserById(rentBook.UserId);
                         item.SubItems.Add(user.Name);
                         item.SubItems.Add(rentBook.RentDate.ToString("yyyy年MM月dd日"));
-                        item.SubItems.Add((rentBook.ReturnDate.Day - rentBook.RentDate.Day).ToString());
-                        item.SubItems.Add((rentBook.ReturnDate.Day - DateTime.Now.Day).ToString());
+                        var rentDays = rentBook.ReturnDate - rentBook.RentDate;
+                        item.SubItems.Add(Math.Ceiling(rentDays.TotalDays).ToString());
+                        var day = rentBook.ReturnDate - DateTime.Now;
+                        item.SubItems.Add(Math.Ceiling(day.TotalDays).ToString());
+                        item.SubItems.Add(rentBook.ReturnDate < DateTime.Now ? "已超期" : "正常");     //状态 [8]
+                        item.SubItems.Add(rentBook.Id.ToString());// rent id [9]
                     }
 
                     this.BookDetailList.Items.Add(item);
@@ -161,7 +166,8 @@ namespace BookSystemWindows
 
             if (BizManager.UserRentBiz.IsBookRented(bookNumber))
             {
-
+                MessageBox.Show("该书已借出，无法再借");
+                return;
             }
             var rentBooksDialog = new RentBooksDialog(bookNumber, () => { InitializeBookDetails(); });
             rentBooksDialog.ShowDialog();
@@ -169,7 +175,27 @@ namespace BookSystemWindows
 
         private void ReturnBooks_Click(object sender, EventArgs e)
         {
+            if (this.BookDetailList.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("请选择要还的书籍");
+                return;
+            }
 
+            if (this.BookDetailList.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("一次只能返还一本书");
+                return;
+            }
+
+            var bookNumber = this.BookDetailList.SelectedItems[0].SubItems[0].Text;
+            var rentId = this.BookDetailList.SelectedItems[0].SubItems[9].Text;
+            if (!BizManager.UserRentBiz.IsBookRented(bookNumber))
+            {
+                MessageBox.Show("该书未借出，不需要还书");
+                return;
+            }
+            var rentBooksDialog = new ReturnBookDialog(Guid.Parse(rentId), () => { InitializeBookDetails(); });
+            rentBooksDialog.ShowDialog();
         }
 
         private void userDetailTip_Click(object sender, EventArgs e)

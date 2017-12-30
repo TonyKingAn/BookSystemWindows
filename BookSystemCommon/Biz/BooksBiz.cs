@@ -26,6 +26,14 @@ namespace BookSystemCommon.Models.Biz
             }
         }
 
+        public Book GetBookByBookId(Guid bookId)
+        {
+            using (var db = Heart.CreateBookDbContext())
+            {
+                return db.Books.FirstOrDefault(b => b.Id == bookId);
+            }
+        }
+
         public bool CreateBook(Book source)
         {
             var result = false;

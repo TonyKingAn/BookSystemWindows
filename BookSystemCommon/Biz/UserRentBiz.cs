@@ -28,7 +28,7 @@ namespace BookSystemCommon.Models.Biz
                     IsReturn = false,
                     ReturnDate = source.ReturnDate,
                     UserId = source.UserId,
-                    ActualReturnDate = new DateTime(1900, 0, 0)
+                    ActualReturnDate = new DateTime(1900, 1, 1)
                 };
 
                 db.RentBooks.Add(result);
@@ -96,6 +96,14 @@ namespace BookSystemCommon.Models.Biz
             using (var db = Heart.CreateBookDbContext())
             {
                 return db.RentBooks.FirstOrDefault(rb => rb.BookId == bookId && rb.IsReturn == false);
+            }
+        }
+
+        public RentBook GetRentInfoById(Guid rentId)
+        {
+            using (var db = Heart.CreateBookDbContext())
+            {
+                return db.RentBooks.FirstOrDefault(rb => rb.Id == rentId);
             }
         }
 
