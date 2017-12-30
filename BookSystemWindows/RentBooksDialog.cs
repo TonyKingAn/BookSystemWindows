@@ -77,9 +77,16 @@ namespace BookSystemWindows
                     return;
                 }
 
+
                 var rentDate = DateTime.Parse(this.bookRentDate_dp.Text);
                 var returnDate = DateTime.Parse(this.bookReturn_dp.Text);
                 var actualReturnDate = new DateTime(1900, 1, 1);
+
+                if (BizManager.UserRentBiz.CanRentBook(Guid.Parse(this.userId_txt.Text)))
+                {
+                    MessageBox.Show("用户借阅超过五本，无法再借");
+                    return;
+                }
 
                 RentBook rb = new RentBook()
                 {
@@ -96,7 +103,8 @@ namespace BookSystemWindows
                 BizManager.UserRentBiz.RentBook(rb);
                 this.Hide();
                 successCallback();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

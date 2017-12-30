@@ -62,7 +62,7 @@ namespace BookSystemCommon.Models.Biz
                 var books = db.RentBooks.Where(rb => rb.UserId == userId && rb.IsReturn == false);
                 if (books.Count() > 5)
                 {
-                    throw new Exception("用户借阅超过五本，无法再借");
+                    return false;
                 }
             }
             return true;
