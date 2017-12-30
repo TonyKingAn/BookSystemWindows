@@ -49,7 +49,8 @@ namespace BookSystemCommon.Models.Biz
                     Id = Guid.NewGuid(),
                     BookNumber = source.BookNumber,
                     Name = source.Name,
-                    Type = source.Type
+                    Type = source.Type,
+                    CreatedTime = DateTime.Now
                 };
 
                 db.Books.Add(createBook);

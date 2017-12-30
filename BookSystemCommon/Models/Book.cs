@@ -15,5 +15,7 @@ namespace BookSystemCommon.Models
         public BookType Type { get; set; }
 
         public string BookNumber { get; set; }
+
+        public DateTime CreatedTime { get; set; }
     }
 }

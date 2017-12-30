@@ -25,7 +25,8 @@ namespace BookSystemCommon.Models.Biz
                     Comments = source.Comments,
                     ExpireTime = source.ExpireTime,
                     Mobile = source.Mobile,
-                    Name = source.Name
+                    Name = source.Name,
+                    CreatedTime = DateTime.Now
                 };
                 db.Users.Add(createUser);
                 db.SaveChanges();

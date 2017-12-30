@@ -28,6 +28,7 @@ namespace BookSystemCommon.Models.Biz
                     IsReturn = false,
                     ReturnDate = source.ReturnDate,
                     UserId = source.UserId,
+                    CreatedTime = DateTime.Now,
                     ActualReturnDate = new DateTime(1900, 1, 1)
                 };
 

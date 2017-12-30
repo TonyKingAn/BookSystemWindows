@@ -24,5 +24,6 @@ namespace BookSystemCommon.Models
 
         public DateTime ActualReturnDate { get; set; }
         public bool IsReturn { get; set; }
+        public DateTime CreatedTime { get; set; }
     }
 }

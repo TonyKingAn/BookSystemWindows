@@ -19,5 +19,7 @@ namespace BookSystemCommon.Models
         public DateTime ExpireTime { get; set; }
 
         public string Comments { get; set; }
+
+        public DateTime CreatedTime { get; set; }
     }
 }
