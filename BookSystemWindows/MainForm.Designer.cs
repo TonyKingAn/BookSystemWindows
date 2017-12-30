@@ -44,6 +44,7 @@ namespace BookSystemWindows
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.keyword_txt = new System.Windows.Forms.TextBox();
+            this.createBookType_btn = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +62,8 @@ namespace BookSystemWindows
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CreateBooksTip});
+            this.CreateBooksTip,
+            this.createBookType_btn});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(71, 20);
             this.toolStripMenuItem1.Text = "图书管理";
@@ -69,7 +71,7 @@ namespace BookSystemWindows
             // CreateBooksTip
             // 
             this.CreateBooksTip.Name = "CreateBooksTip";
-            this.CreateBooksTip.Size = new System.Drawing.Size(126, 22);
+            this.CreateBooksTip.Size = new System.Drawing.Size(152, 22);
             this.CreateBooksTip.Text = "新增图书";
             this.CreateBooksTip.Click += new System.EventHandler(this.CreateBooks);
             // 
@@ -169,6 +171,13 @@ namespace BookSystemWindows
             this.keyword_txt.Size = new System.Drawing.Size(187, 20);
             this.keyword_txt.TabIndex = 14;
             // 
+            // createBookType_btn
+            // 
+            this.createBookType_btn.Name = "createBookType_btn";
+            this.createBookType_btn.Size = new System.Drawing.Size(152, 22);
+            this.createBookType_btn.Text = "新增图书类型";
+            this.createBookType_btn.Click += new System.EventHandler(this.createBookType_btn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,5 +218,6 @@ namespace BookSystemWindows
         private Label label4;
         private TextBox keyword_txt;
         private ToolStripMenuItem userDetail_tip;
+        private ToolStripMenuItem createBookType_btn;
     }
 }

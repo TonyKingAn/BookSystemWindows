@@ -97,7 +97,5 @@ namespace BookSystemCommon.Models.Biz
                 return db.Users.ToList();
             }
         }
-
-
     }
 }

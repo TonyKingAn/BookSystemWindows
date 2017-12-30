@@ -55,45 +55,51 @@ namespace BookSystemWindows
 
         private void submit_btn_Click(object sender, EventArgs e)
         {
-            var book = BizManager.BooksBiz.GetBookByBookNumber(this.bookNumber_txt.Text);
-
-            if (book == null)
+            try
             {
-                MessageBox.Show("未找到可借阅的书籍");
-                return;
+                var book = BizManager.BooksBiz.GetBookByBookNumber(this.bookNumber_txt.Text);
+
+                if (book == null)
+                {
+                    MessageBox.Show("未找到可借阅的书籍");
+                    return;
+                }
+
+                if (DateTime.Parse(this.bookRentDate_dp.Text) >= DateTime.Parse(this.bookReturn_dp.Text))
+                {
+                    MessageBox.Show("借书日期不能小于或等于还书日期");
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(this.userId_txt.Text))
+                {
+                    MessageBox.Show("用户信息不能为空");
+                    return;
+                }
+
+                var rentDate = DateTime.Parse(this.bookRentDate_dp.Text);
+                var returnDate = DateTime.Parse(this.bookReturn_dp.Text);
+                var actualReturnDate = new DateTime(1900, 1, 1);
+
+                RentBook rb = new RentBook()
+                {
+                    Id = Guid.NewGuid(),
+                    BookId = book.Id,
+                    UserId = Guid.Parse(this.userId_txt.Text),
+                    IsReturn = false,
+                    RentDate = rentDate,
+                    ReturnDate = returnDate,
+                    ActualReturnDate = actualReturnDate,
+                    Comments = string.Empty
+                };
+
+                BizManager.UserRentBiz.RentBook(rb);
+                this.Hide();
+                successCallback();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
-
-            if (DateTime.Parse(this.bookRentDate_dp.Text) >= DateTime.Parse(this.bookReturn_dp.Text))
-            {
-                MessageBox.Show("借书日期不能小于或等于还书日期");
-                return;
-            }
-
-            if (string.IsNullOrEmpty(this.userId_txt.Text))
-            {
-                MessageBox.Show("用户信息不能为空");
-                return;
-            }
-
-            var rentDate = DateTime.Parse(this.bookRentDate_dp.Text);
-            var returnDate = DateTime.Parse(this.bookReturn_dp.Text);
-            var actualReturnDate = new DateTime(1900, 1, 1);
-
-            RentBook rb = new RentBook()
-            {
-                Id = Guid.NewGuid(),
-                BookId = book.Id,
-                UserId = Guid.Parse(this.userId_txt.Text),
-                IsReturn = false,
-                RentDate = rentDate,
-                ReturnDate = returnDate,
-                ActualReturnDate = actualReturnDate,
-                Comments = string.Empty
-            };
-
-            BizManager.UserRentBiz.RentBook(rb);
-            this.Hide();
-            successCallback();
         }
 
         private void selectUser_btn_Click(object sender, EventArgs e)

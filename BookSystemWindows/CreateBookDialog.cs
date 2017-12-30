@@ -22,11 +22,14 @@ namespace BookSystemWindows
             InitializeComponent();
 
             var bookType = BizManager.BooksBiz.GetBookTypes();
-            BindingSource bs = new BindingSource();
-            bs.DataSource = bookType;
-            this.bookType_cb.DataSource = bs;
-            bookType_cb.ValueMember = "Key";
-            bookType_cb.DisplayMember = "Value";
+            if(bookType != null)
+            {
+                BindingSource bs = new BindingSource();
+                bs.DataSource = bookType;
+                this.bookType_cb.DataSource = bs;
+                bookType_cb.ValueMember = "Key";
+                bookType_cb.DisplayMember = "Value";
+            }
         }
 
         private void confirm_btn_Click(object sender, EventArgs e)
@@ -42,6 +45,12 @@ namespace BookSystemWindows
                 return;
             }
 
+            if(this.bookType_cb.SelectedValue.ToString() == "没有图书类型请创建新类型")
+            {
+                MessageBox.Show("没有图书类型无法创建图书");
+                return;
+            }
+
             using (var db = Heart.CreateBookDbContext())
             {
                 if (db.Books.Any(b => b.BookNumber == this.bookNumber_txt.Text))
@@ -50,7 +59,7 @@ namespace BookSystemWindows
                     return;
                 }
 
-                var type = (BookType)Enum.Parse(typeof(BookType), this.bookType_cb.SelectedValue.ToString());
+                var type = this.bookType_cb.SelectedValue.ToString();
                 var createBook = new Book()
                 {
                     Id = Guid.NewGuid(),

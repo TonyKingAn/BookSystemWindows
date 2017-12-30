@@ -69,11 +69,13 @@ namespace BookSystemWindows
                 if (actualReturnDate < rentInfo.RentDate)
                 {
                     MessageBox.Show("还书时间不能小于借书时间");
+                    return;
                 }
 
                 if (actualReturnDate > DateTime.Now)
                 {
                     MessageBox.Show("还书时间不能大于当前时间");
+                    return;
                 }
 
                 db.RentBooks.Attach(rentInfo);

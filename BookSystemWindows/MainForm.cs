@@ -163,6 +163,7 @@ namespace BookSystemWindows
             if (this.BookDetailList.SelectedItems.Count > 1)
             {
                 MessageBox.Show("只能修改一本书，请勿多选");
+                return;
             }
 
             var bookNumber = this.BookDetailList.SelectedItems[0].SubItems[0].Text;
@@ -215,6 +216,18 @@ namespace BookSystemWindows
 
         private void RentBooks_Click(object sender, EventArgs e)
         {
+            if (this.BookDetailList.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("请选择要借的书籍");
+                return;
+            }
+
+            if (this.BookDetailList.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("只能选择一本书");
+                return;
+            }
+
             var bookNumber = this.BookDetailList.SelectedItems[0].SubItems[0].Text;
 
             if (BizManager.UserRentBiz.IsBookRented(bookNumber))
@@ -260,6 +273,12 @@ namespace BookSystemWindows
         private void button1_Click(object sender, EventArgs e)
         {
             UpdateBookDetails(this.keyword_txt.Text);
+        }
+
+        private void createBookType_btn_Click(object sender, EventArgs e)
+        {
+            CreateBookTypeDialog cbtDialog = new CreateBookTypeDialog();
+            cbtDialog.ShowDialog();
         }
     }
 }

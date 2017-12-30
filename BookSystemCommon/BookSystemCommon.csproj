@@ -58,6 +58,7 @@
     <Compile Include="Heart.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="BookDbContext.cs" />
+    <Compile Include="Models\BookType3.cs" />
     <Compile Include="Models\BookType.cs" />
     <Compile Include="Models\RentBook.cs" />
     <Compile Include="Models\User.cs" />

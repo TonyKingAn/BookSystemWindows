@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BookSystemCommon.Models
 {
-    public enum BookType
+    [Table("BookType")]
+    public class BookType
     {
-        Childern = 1,
-        Adult = 2,
+        public Guid Id { get; set; }
+
+        public string TypeName { get; set; }
+
+        public DateTime CreatedTime { get; set; }
+
     }
 }

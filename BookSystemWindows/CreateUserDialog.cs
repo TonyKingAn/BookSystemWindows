@@ -30,29 +30,36 @@ namespace BookSystemWindows
 
         private void submit_btn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.userName_txt.Text))
+            try
             {
-                MessageBox.Show("用户姓名不能为空");
-            }
+                if (string.IsNullOrEmpty(this.userName_txt.Text))
+                {
+                    MessageBox.Show("用户姓名不能为空");
+                }
 
-            if (DateTime.Parse(this.expireDate_dp.Text) < DateTime.Now)
-            {
-                MessageBox.Show("会员过期时间不能小于或等于当前时间");
-                return;
-            }
+                if (DateTime.Parse(this.expireDate_dp.Text) < DateTime.Now)
+                {
+                    MessageBox.Show("会员过期时间不能小于或等于当前时间");
+                    return;
+                }
 
-            User createUser = new User()
+                User createUser = new User()
+                {
+                    Id = Guid.NewGuid(),
+                    Birthday = DateTime.Parse(this.userBirthday_dp.Text),
+                    ExpireTime = DateTime.Parse(this.expireDate_dp.Text),
+                    Comments = this.userComments_txt.Text,
+                    Mobile = this.userMobile_txt.Text,
+                    Name = this.userName_txt.Text
+                };
+                BizManager.UsersBiz.CreateUser(createUser);
+                this.Hide();
+                successCallback();
+            }
+            catch (Exception ex)
             {
-                Id = Guid.NewGuid(),
-                Birthday = DateTime.Parse(this.userBirthday_dp.Text),
-                ExpireTime = DateTime.Parse(this.expireDate_dp.Text),
-                Comments = this.userComments_txt.Text,
-                Mobile = this.userMobile_txt.Text,
-                Name = this.userName_txt.Text
-            };
-            BizManager.UsersBiz.CreateUser(createUser);
-            this.Hide();
-            successCallback();
+                MessageBox.Show(ex.Message);
+            }
         }
 
     }

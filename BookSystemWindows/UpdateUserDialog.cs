@@ -46,36 +46,43 @@ namespace BookSystemWindows
 
         private void submit_btn_Click(object sender, EventArgs e)
         {
-            var existedUser = BizManager.UsersBiz.GetUserById(userId);
-            if (existedUser == null)
+            try
             {
-                throw new Exception("未找到当前可修改用户");
-            }
+                var existedUser = BizManager.UsersBiz.GetUserById(userId);
+                if (existedUser == null)
+                {
+                    throw new Exception("未找到当前可修改用户");
+                }
 
-            if (string.IsNullOrEmpty(this.userName_txt.Text))
-            {
-                MessageBox.Show("用户姓名不能为空");
-                return;
-            }
+                if (string.IsNullOrEmpty(this.userName_txt.Text))
+                {
+                    MessageBox.Show("用户姓名不能为空");
+                    return;
+                }
 
-            if (DateTime.Parse(this.userExpire_dp.Text) < DateTime.Now)
-            {
-                MessageBox.Show("会员过期时间不能小于或等于当前时间");
-                return;
-            }
+                if (DateTime.Parse(this.userExpire_dp.Text) < DateTime.Now)
+                {
+                    MessageBox.Show("会员过期时间不能小于或等于当前时间");
+                    return;
+                }
 
-            User createUser = new User()
+                User createUser = new User()
+                {
+                    Id = userId,
+                    Birthday = DateTime.Parse(this.userBirthday_dp.Text),
+                    ExpireTime = DateTime.Parse(this.userExpire_dp.Text),
+                    Comments = this.userComments_txt.Text,
+                    Mobile = this.userMobile_txt.Text,
+                    Name = this.userName_txt.Text
+                };
+                BizManager.UsersBiz.UpdateUser(createUser);
+                this.Hide();
+                succcessCallBack();
+            }
+            catch (Exception ex)
             {
-                Id = userId,
-                Birthday = DateTime.Parse(this.userBirthday_dp.Text),
-                ExpireTime = DateTime.Parse(this.userExpire_dp.Text),
-                Comments = this.userComments_txt.Text,
-                Mobile = this.userMobile_txt.Text,
-                Name = this.userName_txt.Text
-            };
-            BizManager.UsersBiz.UpdateUser(createUser);
-            this.Hide();
-            succcessCallBack();
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

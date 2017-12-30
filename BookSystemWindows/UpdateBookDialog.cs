@@ -53,6 +53,7 @@ namespace BookSystemWindows
                 if (existedBook == null)
                 {
                     MessageBox.Show("未找到可更改的书籍");
+                    return;
                 }
 
                 var message = string.Empty;
@@ -70,7 +71,7 @@ namespace BookSystemWindows
 
                 if (result == DialogResult.OK)
                 {
-                    var type = (BookType)Enum.Parse(typeof(BookType), this.bookType_cb.SelectedValue.ToString());
+                    var type = this.bookType_cb.SelectedValue.ToString();
                     var createBook = new Book()
                     {
                         BookNumber = this.bookNumber_txt.Text,

@@ -12,7 +12,7 @@ namespace BookSystemCommon.Models
 
         public string Name { get; set; }
 
-        public BookType Type { get; set; }
+        public string Type { get; set; }
 
         public string BookNumber { get; set; }
 

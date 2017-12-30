@@ -16,6 +16,8 @@ namespace BookSystemCommon.Models
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<BookType> BookTypes { get; set; }
+
         public BookDbContext(string connectionString) : base(connectionString)
         {
 

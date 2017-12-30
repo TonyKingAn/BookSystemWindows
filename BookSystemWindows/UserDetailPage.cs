@@ -171,40 +171,46 @@ namespace BookSystemWindows
 
         private void deleteUser_btn_Click(object sender, EventArgs e)
         {
-            if (this.userDetailList.SelectedItems.Count == 0)
+            try
             {
-                MessageBox.Show("请选择要删除的用户");
-                return;
-            }
-
-            List<Guid> deleteUserIds = new List<Guid>();
-            string message = string.Empty;
-            foreach (var user in this.userDetailList.SelectedItems)
-            {
-                var userId = this.userDetailList.SelectedItems[0].SubItems[6].Text; //userId
-                var userName = this.userDetailList.SelectedItems[0].SubItems[0].Text;
-                deleteUserIds.Add(Guid.Parse(userId));
-                if (BizManager.UserRentBiz.RelatedRent(userId))
+                if (this.userDetailList.SelectedItems.Count == 0)
                 {
-                    message += $"{userName},";
+                    MessageBox.Show("请选择要删除的用户");
+                    return;
                 }
-            }
 
-            if (!string.IsNullOrEmpty(message))
-            {
-                message = message.TrimEnd(',') + "这些用户有关联的借书信息，删除会造成数据统计错误，是否删除？";
-            }
-            else
-            {
-                message = "确定要删除这些用户吗？";
-            }
+                List<Guid> deleteUserIds = new List<Guid>();
+                string message = string.Empty;
+                foreach (var user in this.userDetailList.SelectedItems)
+                {
+                    var userId = this.userDetailList.SelectedItems[0].SubItems[6].Text; //userId
+                    var userName = this.userDetailList.SelectedItems[0].SubItems[0].Text;
+                    deleteUserIds.Add(Guid.Parse(userId));
+                    if (BizManager.UserRentBiz.RelatedRent(userId))
+                    {
+                        message += $"{userName},";
+                    }
+                }
 
-            var result = MessageBox.Show(message, "删除提示", MessageBoxButtons.OKCancel);
-            if (result == DialogResult.OK)
+                if (!string.IsNullOrEmpty(message))
+                {
+                    message = message.TrimEnd(',') + "这些用户有关联的借书信息，删除会造成数据统计错误，是否删除？";
+                }
+                else
+                {
+                    message = "确定要删除这些用户吗？";
+                }
+
+                var result = MessageBox.Show(message, "删除提示", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    BizManager.UsersBiz.DeleteUser(deleteUserIds);
+                }
+                InitializeUserDetails();
+            }catch(Exception ex)
             {
-                BizManager.UsersBiz.DeleteUser(deleteUserIds);
+                MessageBox.Show(ex.Message);
             }
-            InitializeUserDetails();
         }
 
         private void submit_btn_Click(object sender, EventArgs e)

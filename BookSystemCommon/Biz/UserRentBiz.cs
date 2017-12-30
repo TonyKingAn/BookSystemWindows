@@ -37,29 +37,6 @@ namespace BookSystemCommon.Models.Biz
             }
         }
 
-        public void ReturnBook(RentBook source)
-        {
-            if (source == null)
-            {
-                throw new Exception("借用书籍出错");
-            }
-
-            using (var db = Heart.CreateBookDbContext())
-            {
-                var existed = db.RentBooks.FirstOrDefault(rb => rb.Id == source.Id);
-
-                if (existed == null)
-                {
-                    throw new Exception("未找到可还书籍");
-                }
-
-                db.RentBooks.Attach(existed);
-                existed.ActualReturnDate = source.ActualReturnDate;
-                existed.Comments = source.Comments;
-                db.SaveChanges();
-            }
-        }
-
         // we support keyword could be book number or userId
         public bool RelatedRent(string keyWord)
         {
@@ -77,11 +54,24 @@ namespace BookSystemCommon.Models.Biz
             }
         }
 
+        // one person just can rent 5 books
+        public bool CanRentBook(Guid userId)
+        {
+            using (var db = Heart.CreateBookDbContext())
+            {
+                var books = db.RentBooks.Where(rb => rb.UserId == userId && rb.IsReturn == false);
+                if (books.Count() > 5)
+                {
+                    throw new Exception("用户借阅超过五本，无法再借");
+                }
+            }
+            return true;
+        }
+
         public bool IsBookRented(string bookNumber)
         {
             using (var db = Heart.CreateBookDbContext())
             {
-
                 var book = db.Books.FirstOrDefault(b => b.BookNumber == bookNumber);
                 if (book == null)
                 {
