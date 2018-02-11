@@ -27,7 +27,8 @@ namespace BookSystemCommon.Models.Biz
                     ExpireTime = source.ExpireTime,
                     Mobile = source.Mobile,
                     Name = source.Name,
-                    CreatedTime = DateTime.Now
+                    CreatedTime = DateTime.Now,
+                    Sex = source.Sex
                 };
                 db.Users.Add(createUser);
                 db.SaveChanges();
@@ -54,6 +55,7 @@ namespace BookSystemCommon.Models.Biz
                 existedUser.ExpireTime = updateSource.ExpireTime;
                 existedUser.Comments = updateSource.Comments;
                 existedUser.Birthday = updateSource.Birthday;
+                existedUser.Sex = updateSource.Sex;
                 db.SaveChanges();
             }
         }
@@ -130,7 +132,8 @@ namespace BookSystemCommon.Models.Biz
                 if (string.IsNullOrEmpty(row["姓名"].ToString())
                     || string.IsNullOrEmpty(row["电话"].ToString())
                     || string.IsNullOrEmpty(row["生日"].ToString())
-                    || string.IsNullOrEmpty(row["过期时间"].ToString()))
+                    || string.IsNullOrEmpty(row["过期时间"].ToString())
+                    || string.IsNullOrEmpty(row["性别"].ToString()))
                 {
                     msg.AppendLine($"必要字段缺失请检查姓名，电话，行号：{data.Rows.IndexOf(row) + 1}");
                     continue;
@@ -141,6 +144,7 @@ namespace BookSystemCommon.Models.Biz
                 var expireTime = Convert.ToDateTime(row["过期时间"]);
                 var mobile = row["电话"].ToString();
                 var name = row["姓名"].ToString();
+                var sex = row["性别"].ToString();
 
                 if (IsRepetitionUser(name, mobile))
                 {
@@ -162,7 +166,8 @@ namespace BookSystemCommon.Models.Biz
                     CreatedTime = DateTime.Now,
                     ExpireTime = expireTime,
                     Mobile = mobile,
-                    Name = name
+                    Name = name,
+                    Sex = sex
                 };
 
                 addUserList.Add(user);

@@ -50,7 +50,8 @@ namespace BookSystemWindows
                     ExpireTime = DateTime.Parse(this.expireDate_dp.Text),
                     Comments = this.userComments_txt.Text,
                     Mobile = this.userMobile_txt.Text,
-                    Name = this.userName_txt.Text
+                    Name = this.userName_txt.Text,
+                    Sex = this.female_cb.Checked ? this.female_cb.Text : this.male_cb.Text
                 };
                 BizManager.UsersBiz.CreateUser(createUser);
                 this.Hide();

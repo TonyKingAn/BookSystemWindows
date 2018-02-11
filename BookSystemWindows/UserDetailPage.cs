@@ -39,6 +39,7 @@ namespace BookSystemWindows
 
         private List<string> userDetailHeaders = new List<string>() {
             "姓名",
+            "性别",
             "电话",
             "生日",
             "过期时间",
@@ -65,6 +66,7 @@ namespace BookSystemWindows
                 foreach (var user in users)
                 {
                     ListViewItem item = new ListViewItem(user.Name);
+                    item.SubItems.Add(user.Sex);
                     item.SubItems.Add(user.Mobile);
                     item.SubItems.Add(user.Birthday.ToString("yyyy年MM月dd日"));
                     item.SubItems.Add(user.ExpireTime.ToString("yyyy年MM月dd日"));

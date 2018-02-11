@@ -37,6 +37,15 @@ namespace BookSystemWindows
             this.userComments_txt.Text = existedUser.Comments;
             this.userBirthday_dp.Text = existedUser.Birthday.ToString("yyyy年MM月dd日");
             this.userExpire_dp.Text = existedUser.ExpireTime.ToString("yyyy年MM月dd日");
+
+            if (existedUser.Sex == "男")
+            {
+                this.checkBox1.Checked = true;    //男
+            }
+            else if (existedUser.Sex == "女")
+            {
+                this.checkBox2.Checked = true; //女
+            }
         }
 
         private void resetBtn_Click(object sender, System.EventArgs e)
@@ -73,7 +82,8 @@ namespace BookSystemWindows
                     ExpireTime = DateTime.Parse(this.userExpire_dp.Text),
                     Comments = this.userComments_txt.Text,
                     Mobile = this.userMobile_txt.Text,
-                    Name = this.userName_txt.Text
+                    Name = this.userName_txt.Text,
+                    Sex = this.checkBox1.Checked ? this.checkBox1.Text : this.checkBox2.Text
                 };
                 BizManager.UsersBiz.UpdateUser(createUser);
                 this.Hide();
