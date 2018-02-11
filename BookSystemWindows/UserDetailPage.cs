@@ -207,7 +207,8 @@ namespace BookSystemWindows
                     BizManager.UsersBiz.DeleteUser(deleteUserIds);
                 }
                 InitializeUserDetails();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -236,6 +237,22 @@ namespace BookSystemWindows
         private void search_btn_Click(object sender, EventArgs e)
         {
             UpdateUserDetail(this.keyword_txt.Text);
+        }
+
+        private void ImportUser_MenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog file = new OpenFileDialog();
+                file.ShowDialog();
+                var msg = BizManager.UsersBiz.ImportUser(file.FileName);
+                MessageBox.Show(msg);
+                InitializeUserDetails();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

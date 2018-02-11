@@ -34,6 +34,8 @@ namespace BookSystemWindows
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateBooksTip = new System.Windows.Forms.ToolStripMenuItem();
+            this.createBookType_btn = new System.Windows.Forms.ToolStripMenuItem();
+            this.ImportBook_menuTip = new System.Windows.Forms.ToolStripMenuItem();
             this.UserManger = new System.Windows.Forms.ToolStripMenuItem();
             this.userDetail_tip = new System.Windows.Forms.ToolStripMenuItem();
             this.BookDetailList = new System.Windows.Forms.ListView();
@@ -44,7 +46,6 @@ namespace BookSystemWindows
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.keyword_txt = new System.Windows.Forms.TextBox();
-            this.createBookType_btn = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +64,8 @@ namespace BookSystemWindows
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CreateBooksTip,
-            this.createBookType_btn});
+            this.createBookType_btn,
+            this.ImportBook_menuTip});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(71, 20);
             this.toolStripMenuItem1.Text = "图书管理";
@@ -74,6 +76,20 @@ namespace BookSystemWindows
             this.CreateBooksTip.Size = new System.Drawing.Size(152, 22);
             this.CreateBooksTip.Text = "新增图书";
             this.CreateBooksTip.Click += new System.EventHandler(this.CreateBooks);
+            // 
+            // createBookType_btn
+            // 
+            this.createBookType_btn.Name = "createBookType_btn";
+            this.createBookType_btn.Size = new System.Drawing.Size(152, 22);
+            this.createBookType_btn.Text = "新增图书类型";
+            this.createBookType_btn.Click += new System.EventHandler(this.createBookType_btn_Click);
+            // 
+            // ImportBook_menuTip
+            // 
+            this.ImportBook_menuTip.Name = "ImportBook_menuTip";
+            this.ImportBook_menuTip.Size = new System.Drawing.Size(152, 22);
+            this.ImportBook_menuTip.Text = "导入图书";
+            this.ImportBook_menuTip.Click += new System.EventHandler(this.ImportBook_menuTip_Click);
             // 
             // UserManger
             // 
@@ -171,13 +187,6 @@ namespace BookSystemWindows
             this.keyword_txt.Size = new System.Drawing.Size(187, 20);
             this.keyword_txt.TabIndex = 14;
             // 
-            // createBookType_btn
-            // 
-            this.createBookType_btn.Name = "createBookType_btn";
-            this.createBookType_btn.Size = new System.Drawing.Size(152, 22);
-            this.createBookType_btn.Text = "新增图书类型";
-            this.createBookType_btn.Click += new System.EventHandler(this.createBookType_btn_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,5 +228,6 @@ namespace BookSystemWindows
         private TextBox keyword_txt;
         private ToolStripMenuItem userDetail_tip;
         private ToolStripMenuItem createBookType_btn;
+        private ToolStripMenuItem ImportBook_menuTip;
     }
 }

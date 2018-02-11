@@ -37,6 +37,7 @@
             this.updateUser_btn = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteUser_btn = new System.Windows.Forms.ToolStripMenuItem();
             this.submit_btn = new System.Windows.Forms.Button();
+            this.ImportUser_MenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,6 +86,7 @@
             // 用户管理ToolStripMenuItem
             // 
             this.用户管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ImportUser_MenuItem,
             this.createUser_btn,
             this.updateUser_btn,
             this.deleteUser_btn});
@@ -95,21 +97,21 @@
             // createUser_btn
             // 
             this.createUser_btn.Name = "createUser_btn";
-            this.createUser_btn.Size = new System.Drawing.Size(126, 22);
+            this.createUser_btn.Size = new System.Drawing.Size(152, 22);
             this.createUser_btn.Text = "新建用户";
             this.createUser_btn.Click += new System.EventHandler(this.createUser_btn_Click);
             // 
             // updateUser_btn
             // 
             this.updateUser_btn.Name = "updateUser_btn";
-            this.updateUser_btn.Size = new System.Drawing.Size(126, 22);
+            this.updateUser_btn.Size = new System.Drawing.Size(152, 22);
             this.updateUser_btn.Text = "修改用户";
             this.updateUser_btn.Click += new System.EventHandler(this.updateUser_btn_Click);
             // 
             // deleteUser_btn
             // 
             this.deleteUser_btn.Name = "deleteUser_btn";
-            this.deleteUser_btn.Size = new System.Drawing.Size(126, 22);
+            this.deleteUser_btn.Size = new System.Drawing.Size(152, 22);
             this.deleteUser_btn.Text = "删除用户";
             this.deleteUser_btn.Click += new System.EventHandler(this.deleteUser_btn_Click);
             // 
@@ -122,6 +124,13 @@
             this.submit_btn.Text = "确定";
             this.submit_btn.UseVisualStyleBackColor = true;
             this.submit_btn.Click += new System.EventHandler(this.submit_btn_Click);
+            // 
+            // ImportUser_MenuItem
+            // 
+            this.ImportUser_MenuItem.Name = "ImportUser_MenuItem";
+            this.ImportUser_MenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ImportUser_MenuItem.Text = "导入用户";
+            this.ImportUser_MenuItem.Click += new System.EventHandler(this.ImportUser_MenuItem_Click);
             // 
             // UserDetailPage
             // 
@@ -154,5 +163,6 @@
         private System.Windows.Forms.ToolStripMenuItem updateUser_btn;
         private System.Windows.Forms.ToolStripMenuItem deleteUser_btn;
         private System.Windows.Forms.Button submit_btn;
+        private System.Windows.Forms.ToolStripMenuItem ImportUser_MenuItem;
     }
 }

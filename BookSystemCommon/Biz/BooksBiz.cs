@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -178,6 +179,110 @@ namespace BookSystemCommon.Models.Biz
             }
         }
 
+        public string ImportBooks(string filePath)
+        {
+            var msg = new StringBuilder();
+            var data = new DataTable();
 
+            try
+            {
+                data = ExcelHelpers.ImportExcelToDataTable(filePath);
+            }
+            catch (Exception ex)
+            {
+                msg.AppendLine("导入失败！");
+                msg.AppendLine("1.请确认模板是否正确，或者下载最新模板");
+                msg.AppendLine("2.请确认Excel中没有空的行");
+                msg.AppendLine("3.请勿对行进行增删操作");
+
+                return msg.ToString();
+            }
+
+            if (data.Rows.Count == 0)
+            {
+                return "无法导入，图书信息为空";
+            }
+
+            var addBookList = new List<Book>();
+            var bookTypeList = new List<BookType>();
+            foreach (DataRow row in data.Rows)
+            {
+                var bookNumber = row["图书编号"].ToString();
+                var name = row["图书名称"].ToString();
+                var type = row["图书类型"].ToString();
+
+                // validate requirement property
+                //1. first to validate required property
+                if (string.IsNullOrEmpty(bookNumber)
+                    || string.IsNullOrEmpty(name)
+                    || string.IsNullOrEmpty(type))
+                {
+                    msg.AppendLine($"必要字段缺失请检查图书编号，图书名称和图书类型.,行号：{data.Rows.IndexOf(row) + 1}");
+                    continue;
+                }
+
+                // validate repetition book
+                if (IsRepitionBook(bookNumber))
+                {
+                    msg.AppendLine($"该书已经存在，书名：{name},书籍编码：{bookNumber},行号：{data.Rows.IndexOf(row) + 1}");
+                    continue;
+                }
+
+                // validate repetition book type
+                if (!IsRepitionBookType(type))
+                {
+                    // add book type
+                    var bookType = new BookType()
+                    {
+                        Id = Guid.NewGuid(),
+                        TypeName = type,
+                        CreatedTime = DateTime.Now
+                    };
+
+                    bookTypeList.Add(bookType);
+                }
+
+                // add book
+                var book = new Book()
+                {
+                    Id = Guid.NewGuid(),
+                    BookNumber = bookNumber,
+                    CreatedTime = DateTime.Now,
+                    Name = name,
+                    Type = type
+                };
+
+                addBookList.Add(book);
+            }
+
+            using (var db = Heart.CreateBookDbContext())
+            {
+                db.Books.AddRange(addBookList);
+                db.BookTypes.AddRange(bookTypeList);
+                db.SaveChanges();
+            }
+
+            if (string.IsNullOrEmpty(msg.ToString()))
+            {
+                return "书籍导入成功";
+            }
+            return msg.ToString();
+        }
+
+        private bool IsRepitionBook(string bookNumber)
+        {
+            using (var db = Heart.CreateBookDbContext())
+            {
+                return db.Books.Any(b => b.BookNumber == bookNumber);
+            }
+        }
+
+        private bool IsRepitionBookType(string bookTypeName)
+        {
+            using (var db = Heart.CreateBookDbContext())
+            {
+                return db.BookTypes.Any(b => b.TypeName == bookTypeName);
+            }
+        }
     }
 }

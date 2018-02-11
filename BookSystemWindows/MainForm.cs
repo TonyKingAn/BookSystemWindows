@@ -280,5 +280,22 @@ namespace BookSystemWindows
             CreateBookTypeDialog cbtDialog = new CreateBookTypeDialog();
             cbtDialog.ShowDialog();
         }
+
+        private void ImportBook_menuTip_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog file = new OpenFileDialog();
+                file.ShowDialog();
+                var msg = BizManager.BooksBiz.ImportBooks(file.FileName);
+
+                MessageBox.Show(msg);
+                InitializeBookDetails();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
